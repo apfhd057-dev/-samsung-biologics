@@ -5,22 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Samsung Biologics</title>
     <link rel="stylesheet" href="./css/reset.css">
-    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/main.css">
 </head>
 <body>
     <div id="wrap">
         <main id="main">
             <header id="header">
                 <h1 class="logo">
-                    <img src="./image/logo.png" alt="" srcset="">
+                    <img src="./images/logo.png" alt="" srcset="">
                 </h1>
                 <nav id="nav">
                     <ul class="menu">
-                        <li><a href="">ABOUT US</a></li>
-                        <li><a href="">Our Services</a></li>
-                        <li><a href="">Sustainability</a></li>
-                        <li><a href="">Careers</a></li>
-                        <li><a href="">Newsroom</a></li>
+                        <li><a href="./aboutus.html">ABOUT US</a></li>
+                        <li><a href="./ourservices.html">Our Services</a></li>
+                        <li><a href="./sustainability.html">Sustainability</a></li>
+                        <li><a href="./careers.html">Careers</a></li>
+                        <li><a href="./newsroom.html">Newsroom</a></li>
                     </ul>
                 </nav>
                 <div id="info">
@@ -39,14 +39,22 @@
                     <h3>차세대 바이오 생산 솔루션</h3>
                     <h1>Why <span> Samsung <br> Biologics?</span></h1>
                     <p class="txt1">연구·개발·생산 전 과정을 아우르는 통합 바이오 서비스를 제공합니다.</p>
-                    <h4>오가노이드 (Organoids)</h4>
-                    <p class="txt2">환자 유래 오가노이드 (Patient-Derived Organoids) 기반의 약물 스크리닝<br> 서비스로 신약 후보 물질의 효능을 평가합니다.</p>
+                    <h4 class="service_title">오가노이드 (Organoids)</h4>
+                    <p class="txt2 service_desc">환자 유래 오가노이드 (Patient-Derived Organoids) 기반의 약물 스크리닝<br> 서비스로 신약 후보 물질의 효능을 평가합니다.</p>
                     <button>VIEW MORE</button>
                 </div>
                 <div class="services_img">
-                    <img src="./image/Original_Loop_high_img.png" alt="" srcset="">
+                    <img class="service_img" src="./images/Original_Loop_high_img.png" alt="">
+                </div>
+                <div class="services_menu">
+                    <button class="active" data-index="0">Research</button>
+                    <button data-index="1">Development</button>
+                    <button data-index="2">Manufacturing</button>
+                    <button data-index="3">Quality</button>
+                    <button data-index="4">New Modalities</button>
                 </div>
             </div>
+            
             
         </section>
         <section id="performance">
@@ -57,19 +65,19 @@
                     <ul class="performance_box_in">
                         <li>
                             <h5>총 생산능력</h5>
-                            <h1>845 kL</h1>
+                            <h1 class="count" data-target="845" data-suffix=" kL">0</h1>
                         </li>
                         <li>
                             <h5>규제 승인 건수</h5>
-                            <h1>440+</h1>
+                            <h1 class="count" data-target="440" data-suffix="+">0</h1>
                         </li>
                         <li>
                             <h5>배치 성공률</h5>
-                            <h1>99%</h1>
+                            <h1 class="count" data-target="99" data-suffix="%">0</h1>
                         </li>
                         <li>
                             <h5>글로벌 고객사</h5>
-                            <h1>145+</h1>
+                            <h1 class="count" data-target="145" data-suffix="+">0</h1>
                         </li>
                     </ul>
                 </div>
@@ -103,7 +111,7 @@
                     <button>VIEW MORE</button>
                 </div>
                 <div class="esg_img">
-                    <img src="./image/golobal.gif" alt="" srcset="">
+                    <img src="./images/golobal.gif" alt="" srcset="">
                 </div>
             </div>
         </section>
@@ -112,12 +120,20 @@
                 <h5>Resource Center</h5>
                 <h3>전문 자료 센터</h3>
             </div>
-            <div class="box">
-                <div><img src="./image/box_img1.webp" alt=""></div>
-                <div><img src="./image/box_img2.webp" alt=""></div>
-                <div><img src="./image/box_img3.webp" alt=""></div>
-            </div>
-            <div class="swiper-pagination"></div>
+            <div class="archive_slider">
+        <button class="archive_prev">‹</button>
+
+        <div class="box">
+            <div><img src="./images/box_img1.webp" alt=""></div>
+            <div><img src="./images/box_img2.webp" alt=""></div>
+            <div><img src="./images/box_img3.webp" alt=""></div>
+            <div><img src="./images/box_img4.webp" alt=""></div>
+        </div>
+
+        <button class="archive_next">›</button>
+    </div>
+
+    <div class="archive_pagination"></div>
 
         </section>
         <section id="newsroom">
@@ -128,24 +144,28 @@
                     <p>삼성바이오로직스의 주요 뉴스와<br>혁신의 순간들을 확인해보세요.</p>
 
                     <div class="circle">
-                        <div class="circle_l"></div>
-                        <div class="circle_r"></div>
+                        <div class="circle_l">
+                            <img src="./images/arrow1_left.png" alt="">
+                        </div>
+                        <div class="circle_r">
+                            <img src="./images/arrow1_right.png" alt="">
+                        </div>
                     </div>
                 </div>
 
                 <div class="news_list">
                     <div class="news_item">
-                        <img src="./image/news1.png" alt="">
+                        <img src="./images/news1.png" alt="">
                         <h4>Press Releases</h4>
                         <p>삼성 라이프사이언스펀드, 美 바이오텍 '카토그래피 바이오사이언스' 투자</p>
                     </div>
                     <div class="news_item">
-                        <img src="./image/news2.png" alt="">
+                        <img src="./images/news2.png" alt="">
                         <h4>Press Releases</h4>
                         <p>삼성 라이프사이언스펀드, 美 바이오텍 '카토그래피 바이오사이언스' 투자</p>
                     </div>
                     <div class="news_item">
-                        <img src="./image/news3.png" alt="">
+                        <img src="./images/news3.png" alt="">
                         <h4>Press Releases</h4>
                         <p>삼성 라이프사이언스펀드, 美 바이오텍 '카토그래피 바이오사이언스' 투자</p>
                     </div>
@@ -160,8 +180,8 @@
                         <h4>투자정보</h4>
                         <p>삼성바이오로직스의 재무성과와 기업가치 정보를 제공합니다.</p>
                     </div>
-                    <div class="noticel_img">
-                        자세히보기
+                    <div class="noticel_img1">
+                        <img src="./images/arrow_l.png" alt="" srcset="">
                     </div>
                 </div>
                 <div class="notice_r">
@@ -170,8 +190,8 @@
                         <h4>채용정보</h4>
                         <p>바이오 산업의 미래를 함께 만들어갈 새로운 인재를 기다립니다.</p>
                     </div>
-                    <div class="noticel_img">
-                        자세히보기
+                    <div class="noticel_img2">
+                        <img src="./images/arrow_r.png" alt="" srcset="">
                     </div>
                 </div>
             </div>
@@ -240,9 +260,10 @@
                         <li><a href="">방문등록시스템</a></li>
                     </ul>
                     <ul class="footer_r">
-                        <li><img src="" alt=""></li>
-                        <li><img src="" alt=""></li>
-                        <li><img src="" alt=""></li>
+                        <li><img src="./images/in.png" alt=""></li>
+                        <li><img src="./images/insta.png" alt=""></li>
+                        <li><img src="./images/facebook.png" alt=""></li>
+                        <li><img src="./images/youtube.png" alt=""></li>
                     </ul>
                 </div>
             </div>
@@ -251,9 +272,176 @@
                     인천광역시 연수구 송도바이오대로 300 | 오시는 길<br>
                     ⓒ2025 Samsung Biologics. All rights reserved.
                 </address>
+                <ul class="footer_bottom_icon">
+                    <li><a href=""><img src="./images/footer_korea_aeo2.png" alt=""></a></li>
+                    <li><a href=""><img src="./images/footer_ffm.png" alt=""></a></li>
+                    <li><a href=""><img src="./images/footer_wa2025.png" alt="" srcset=""></a></li>
+                </ul>
             </div>
         </footer>
     </div>
     
+    <script>
+const serviceData = [
+    {
+        title: "오가노이드 (Organoids)",
+        desc: "환자 유래 오가노이드 (Patient-Derived Organoids) 기반의 약물 스크리닝<br>서비스로 신약 후보 물질의 효능을 평가합니다.",
+        img: "./images/Original_Loop_high_img.png"
+    },
+    {
+        title: "개발 서비스 (Development)",
+        desc: "세포주 개발부터 공정 개발, 분석법 개발까지<br>신약 개발 단계에 필요한 통합 CMC 서비스를 제공합니다.",
+        img: "./images/img_overview_02.png"
+    },
+    {
+        title: "생산 서비스 (Manufacturing)",
+        desc: "소규모 파일럿 생산부터 대규모 상업 생산까지<br>고객의 개발 전략에 맞춘 유연한 생산 서비스를 제공합니다.",
+        img: "./images/manufacturing_img.png"
+    },
+    {
+        title: "품질 관리 (Quality)",
+        desc: "국제 규제 기준에 부합하는 품질 시스템을 기반으로<br>안정적이고 신뢰도 높은 바이오 생산 환경을 제공합니다.",
+        img: "./images/quality_img.png"
+    },
+    {
+        title: "신규 모달리티 (New Modalities)",
+        desc: "ADC, mRNA 등 차세대 바이오의약품 분야까지<br>확장 가능한 생산 솔루션을 제공합니다.",
+        img: "./images/new_modalities_img.png"
+    }
+];
+
+const menuBtns = document.querySelectorAll(".services_menu button");
+const title = document.querySelector(".service_title");
+const desc = document.querySelector(".service_desc");
+const img = document.querySelector(".service_img");
+
+menuBtns.forEach(function(btn) {
+    btn.addEventListener("click", function() {
+        const index = btn.dataset.index;
+        const data = serviceData[index];
+
+        title.innerHTML = data.title;
+        desc.innerHTML = data.desc;
+        img.src = data.img;
+
+        menuBtns.forEach(function(item) {
+            item.classList.remove("active");
+        });
+
+        btn.classList.add("active");
+    });
+});
+
+const counters = document.querySelectorAll(".count");
+let isCounted = false;
+
+function countUp() {
+    counters.forEach(function(counter) {
+        const target = Number(counter.dataset.target);
+        const suffix = counter.dataset.suffix;
+        let current = 0;
+        const speed = 30;
+        const step = target / 60;
+
+        const timer = setInterval(function() {
+            current += step;
+
+            if (current >= target) {
+                counter.innerHTML = target + suffix;
+                clearInterval(timer);
+            } else {
+                counter.innerHTML = Math.floor(current) + suffix;
+            }
+        }, speed);
+    });
+}
+
+window.addEventListener("scroll", function() {
+    const performance = document.querySelector("#performance");
+    const performanceTop = performance.getBoundingClientRect().top;
+    const windowHeight = window.innerHeight;
+
+    if (performanceTop < windowHeight - 150 && isCounted === false) {
+        countUp();
+        isCounted = true;
+    }
+});
+
+const archiveBox = document.querySelector("#archive .box");
+let archiveItems = document.querySelectorAll("#archive .box div");
+
+const archivePrev = document.querySelector(".archive_prev");
+const archiveNext = document.querySelector(".archive_next");
+
+let archiveIndex = 1;
+let archiveTimer;
+const gap = 100;
+
+// 앞뒤 복제
+const firstClone = archiveItems[0].cloneNode(true);
+const lastClone = archiveItems[archiveItems.length - 1].cloneNode(true);
+
+archiveBox.appendChild(firstClone);
+archiveBox.insertBefore(lastClone, archiveItems[0]);
+
+archiveItems = document.querySelectorAll("#archive .box div");
+
+function archiveMove(transition = true) {
+    archiveBox.style.transition = transition ? "transform 0.7s ease" : "none";
+
+    archiveItems.forEach(item => item.classList.remove("active"));
+    archiveItems[archiveIndex].classList.add("active");
+
+    const itemWidth = archiveItems[0].offsetWidth;
+    const moveX = archiveIndex * (itemWidth + gap);
+
+    archiveBox.style.transform =
+        "translateX(calc(50% - 450px - " + moveX + "px))";
+}
+
+function nextSlide() {
+    archiveIndex++;
+    archiveMove(true);
+}
+
+function prevSlide() {
+    archiveIndex--;
+    archiveMove(true);
+}
+
+archiveBox.addEventListener("transitionend", function() {
+    if (archiveIndex === archiveItems.length - 1) {
+        archiveIndex = 1;
+        archiveMove(false);
+    }
+
+    if (archiveIndex === 0) {
+        archiveIndex = archiveItems.length - 2;
+        archiveMove(false);
+    }
+});
+
+archiveNext.addEventListener("click", function() {
+    nextSlide();
+    restartAuto();
+});
+
+archivePrev.addEventListener("click", function() {
+    prevSlide();
+    restartAuto();
+});
+
+function startAuto() {
+    archiveTimer = setInterval(nextSlide, 3000);
+}
+
+function restartAuto() {
+    clearInterval(archiveTimer);
+    startAuto();
+}
+
+archiveMove(false);
+startAuto();
+</script>
 </body>
 </html>
