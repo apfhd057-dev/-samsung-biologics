@@ -3,13 +3,18 @@
     margin: 0;
     padding: 0;
 }
-body{
-    margin: 0;
-    padding: 0;
-    font-family: 'Pretendard', sans-serif;
-    font-size: 18px;
-    color: #333;
-    overflow-x: hidden;
+
+html {
+  scroll-behavior: auto !important;
+}
+
+body {
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+  font-family: 'Pretendard', sans-serif;
+  font-size: 18px;
+  color: #333;
 }
 
 img{

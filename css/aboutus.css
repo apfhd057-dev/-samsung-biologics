@@ -1,0 +1,697 @@
+#wrap{
+    width: 100%;
+}
+#header{
+    position: relative;
+    width:100%;
+    border-bottom: 1px solid #D9D9D9;
+}
+#header:hover{
+    background-color: #fff;
+}
+#header:hover .menu a{
+    color:#333;
+}
+#header:hover .info_r a{
+    color:#333;
+}
+#header .header_inner{
+    margin: 0 auto;
+    width: 100%;
+    max-width: 1600px;
+    height: 110px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+#header .logo_black{
+    opacity: 0;
+}
+#nav .menu{
+    display: flex;
+    gap: 100px;
+    
+}
+#nav .menu a{
+    font-size: 18px;
+    color: #111;
+}
+#nav .menu > li {
+    position: relative;
+}
+#nav .menu > li:hover{
+    font-weight: 600;
+}
+#nav .sub{
+    position: absolute;
+    top: 300%;
+    left: 50%;
+    transform: translateX(-50%);
+    min-width: 160px;
+    padding-top: 20px;
+    text-align: center;
+    z-index: 200;
+}
+#nav .sub li{
+    padding: 20px 0;
+}
+#nav .sub li a{
+    display: block;
+    font-size: 18px;
+    color:#333;
+    font-weight: 400;
+    white-space: nowrap;
+    letter-spacing: -1px; 
+}
+#nav .sub li a:hover{
+    color: #222edd;
+}
+#header .submn_area{
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 100;
+    width: 100%;
+    height: auto;
+    background: #fff;
+    overflow: hidden;
+    border-top:1px solid #ccc;
+    padding: 50px;
+}
+#info{
+    transform:translateY(-10px);
+}
+#info .info_r{
+    display: flex;
+    gap: 20px;
+}
+#info .info_r a{
+    font-size: 16px;
+    color: #111;
+    font-weight: 200;
+}
+#header .mobile_btn{
+    display: none;
+}
+
+
+/* 콘텐츠영역 */
+#contents{
+    width: 100%;
+}
+#section1{
+    width: 100%;
+    height: 680px;
+    background: url(../images/aboutus_section1_img1.png) no-repeat;
+    background-size: cover;
+}
+#section1 .s_text1{
+    margin: 0 auto;
+    width: 100%;
+    height: 680px;
+    max-width: 1600px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+#section1 .s_text1 h1{
+    font-size: 90px;
+    font-weight: 900;
+    color: #23398C;
+    margin-bottom: 70px;
+}
+#section1 .s_text1 p{
+    font-size: 18px;
+    color: #23398C;
+    line-height: 190%;
+
+}
+
+#history{
+  padding:120px 0;
+  background:#fff;
+}
+
+#history .history_inner{
+  width:100%;
+  max-width:1600px;
+  height: 920px;
+  margin:0 auto;
+  background: url(../images/aboutus_section2_img1.png) no-repeat;
+  background-size: cover;
+}
+#history .s1txt_l h4{
+    font-size: 24px;
+    color: #23398C;
+    margin-bottom: 40px;
+}
+#history .s1txt_l h1{
+    font-size: 48px;
+    margin-bottom: 140px;
+}
+#history .history_box{
+  position:relative;
+}
+
+#history .timeline{
+  position:relative;
+  display:flex;
+  justify-content:space-between;
+  z-index:1;
+}
+
+#history .timeline .line{
+  position:absolute;
+  left:3px;
+  top:70px;
+  width:100%;
+  height:8px;
+  background:#002b8f;
+}
+
+#history .timeline .line::after{
+  content:"";
+  position:absolute;
+  right:-8px;
+  top:50%;
+  transform:translateY(-50%);
+  border-left:12px solid #002b8f;
+  border-top:10px solid transparent;
+  border-bottom:10px solid transparent;
+}
+
+#history .item{
+  position:relative;
+  width:14%;
+}
+
+#history .item h3{
+  font-size:32px;
+  color:#002b8f;
+  font-weight:700;
+  margin-bottom:25px;
+}
+
+#history .item span{
+  display:block;
+  width:22px;
+  height:22px;
+  background:#263f96;
+  border:6px solid #eef0ff;
+  border-radius:50%;
+  position:relative;
+  z-index:2;
+}
+
+#history .item::after{
+  content:"";
+  position:absolute;
+  left:11px;
+  top:92px;
+  width:1px;
+  height:240px;
+  background:#ddd;
+}
+
+#history .item p{
+  position:relative;
+  margin-top:110px;
+  padding-left:32px;
+  font-size:18px;
+  line-height:1.4;
+  color:#111;
+}
+
+#history .item p::before{
+  content:"";
+  position:absolute;
+  left:7px;
+  top:7px;
+  width:10px;
+  height:10px;
+  background:#263f96;
+  border-radius:50%;
+  z-index: 3;
+}
+#section3{
+    width: 100%;
+}
+#section3 .s1txt_l{
+    margin: 0 auto;
+    width: 100%;
+    max-width: 1600px;
+}
+#section3 .s1txt_l h4{
+    font-size: 24px;
+    color: #23398C;
+    margin-bottom: 40px;
+}
+#section3 .s1txt_l h1{
+    font-size: 48px;
+    margin-bottom: 70px;
+}
+#section3 .s2img{
+    width: 100%;
+    height: 560px;
+    background: url(../images/aboutus_section3_img1.png) no-repeat;
+    background-size: cover;
+}
+#section3 .s2img_txt{
+    margin: 0 auto;
+    width: 100%;
+    height: 560px;
+    max-width: 1600px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+}
+#section3 .s2img_txt span{
+    font-weight: 700;
+    font-size: 36px;
+}
+#section3 .s2img_txt p{
+    color: #fff;
+    font-size: 24px;
+    line-height: 48px;
+}
+#vision{
+    margin: 0 auto;
+    width: 100%;
+    max-width: 1600px;
+    padding: 200px 0;
+}
+#vision .vision_box{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 60px;
+}
+#vision .vision_l p{
+    font-size: 24px;
+    color: #23398C;
+    margin-bottom: 30px;
+    font-weight: 700;
+
+}
+#vision .vision_l h4{
+    font-size: 48px;
+    font-weight: 900;
+
+}
+#vision .vision_r{
+    width: 1290px;
+    height: 280px;
+    background-color: #F2F3FB;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+#vision .vision_r_boxes{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+#vision .vision_r_box{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+#vision .vision_r span{
+    color: #0360D9;
+    margin-bottom: 20px;
+}
+#vision .vision_r_img{
+    margin-bottom: 30px;
+}
+#vision .vision_r p{
+    color: #525252;
+    
+}
+#vision .line{
+    width: 1px;
+    height: 190px;
+    background-color: #ccc;
+}
+#vision .vision_arrowbox{
+    text-align: center;
+    padding: 80px 0;
+}
+#vision .vision_circle{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+#vision .vision_circle_img{
+    width: 300px;
+    height: 300px;
+    background: url(../images/about_us.png) no-repeat;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 80px;
+}
+#vision .vision_circle_img p{
+    color: #fff;
+    font-size: 36px;
+    font-weight: 900;
+    text-align: center;
+
+}
+#vision .vision_circle p{
+    text-align: center;
+}
+#section5{
+    margin: 0 auto;
+    width: 100%;
+    max-width: 1600px;
+    padding: 0 0 200px;
+}
+#section5 .s1txt_l h4{
+    font-size: 24px;
+    color: #23398C;
+    margin-bottom: 40px;
+}
+#section5 .s1txt_l h1{
+    font-size: 48px;
+    margin-bottom: 70px;
+}
+#section5 .tenboxes{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+#section5 .tenbox{
+    padding: 50px 30px;
+    width: 290px;
+    height: 380px;
+    background-color: #F2F3FB;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    box-sizing: border-box;
+}
+#section5 .tenbox h5{
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+#section5 .tenbox h3{
+    font-size: 28px;
+    margin-bottom: 40px;
+
+}
+#section5 .tenbox p{
+    margin-bottom: 40px;
+}
+#section5 .tenbox_circle{
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background-color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+/* 푸터 */
+
+#footer .footer_top{
+    width: 100%;
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+}
+#footer .footer_nav{
+    margin: 0 auto;
+    padding:40px 0;
+    width: 100%;
+    max-width: 1600px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+#footer .footer_l{
+    display: flex;
+    
+}
+#footer .footer_l li::after{
+    content: "|";
+    width:1px;
+    height:20px;
+    padding: 0 20px;
+
+}
+#footer .footer_l li:last-child::after{
+    content: "";
+}
+#footer .footer_r{
+    display: flex;
+    gap: 20px;
+}
+#footer .footer_r li img{
+    width: 24px;
+    height: 24px;
+}
+#footer .footer_bottom{
+    margin: 0 auto;
+    padding: 40px 0;
+    width: 100%;
+    max-width: 1600px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+#footer .footer_bottom_icon{
+    display: flex;
+    gap: 16px;
+}
+.footer_bottom_icon li:nth-child(1) img{
+    width:58px;
+    height:22px;
+}
+
+.footer_bottom_icon li:nth-child(2) img{
+    width:36px;
+    height:36px;
+}
+
+.footer_bottom_icon li:nth-child(3) img{
+    width:48px;
+    height: 36px;
+}
+@media screen and (max-width:1600px){
+    #header .header_inner,
+    #history .history_inner,
+    #section3 .s1txt_l,
+    #vision,
+    #section5,
+    #footer .footer_nav,
+    #footer .footer_bottom{
+        max-width:90%;
+    }
+
+}
+@media screen and (max-width:1200px){
+
+    #header .header_inner,
+    #history .history_inner,
+    #section3 .s1txt_l,
+    #vision,
+    #section5,
+    #footer .footer_nav,
+    #footer .footer_bottom{
+        max-width:90%;
+    }
+
+    #nav,
+    #info {
+        display: none;
+    }
+    #nav,
+    #info {
+        display: none;
+    }
+    #header .mobile_btn {
+        display: block;
+        border: none;
+        background: none;
+        color: #111;
+        font-size: clamp(26px, 2.5vw, 40px);
+        cursor: pointer;
+        z-index: 999;
+    }
+
+    #section1 .s_text1 h1{
+        font-size:60px;
+    }
+
+    #vision .vision_box{
+        flex-direction:column;
+        gap:30px;
+        align-items:flex-start;
+    }
+
+    #vision .vision_r{
+        width:100%;
+    }
+
+    #section5 .tenboxes{
+        flex-wrap:wrap;
+        gap:30px;
+    }
+
+    #section5 .tenbox{
+        width:calc(50% - 15px);
+    }
+
+}
+@media screen and (max-width:768px){
+
+    #header .header_inner,
+    #history .history_inner,
+    #section3 .s1txt_l,
+    #vision,
+    #section5,
+    #footer .footer_nav,
+    #footer .footer_bottom{
+        max-width:90%;
+    }
+
+    #section1{
+        height:auto;
+        padding:120px 0;
+    }
+
+    #section1 .s_text1{
+        max-width:90%;
+        height:auto;
+    }
+
+    #section1 .s_text1 h1{
+        font-size:48px;
+        margin-bottom:40px;
+    }
+
+    #section1 .s_text1 p{
+        font-size:16px;
+    }
+
+    /* 연혁 */
+
+    #history{
+        padding:80px 0;
+    }
+
+    #history .history_inner{
+        height:auto;
+        max-width:90%;
+    }
+
+    #history .timeline{
+        flex-direction:column;
+        gap:50px;
+    }
+
+    #history .timeline .line{
+        display:none;
+    }
+
+    #history .item{
+        width:100%;
+    }
+
+    #history .item::after{
+        display:none;
+    }
+
+    #history .item p{
+        margin-top:20px;
+        padding-left:0;
+    }
+
+    #history .item p::before{
+        display:none;
+    }
+
+    /* 슬로건 */
+
+    #section3 .s2img{
+        height:400px;
+    }
+
+    #section3 .s2img_txt{
+        max-width:90%;
+        height:400px;
+    }
+
+    #section3 .s2img_txt span{
+        font-size:28px;
+    }
+
+    #section3 .s2img_txt p{
+        font-size:18px;
+        line-height:1.6;
+    }
+
+    /* 비전 */
+
+    #vision{
+        padding:100px 0;
+    }
+
+    #vision .vision_r{
+        padding:40px 20px;
+        box-sizing:border-box;
+        height:auto;
+    }
+
+    #vision .vision_r_boxes{
+        flex-direction:column;
+        gap:30px;
+    }
+
+    #vision .line{
+        display:none;
+    }
+
+    #vision .vision_circle_img{
+        width:220px;
+        height:220px;
+    }
+
+    /* 10대 행동원칙 */
+
+    #section5 .tenboxes{
+        flex-direction:column;
+    }
+
+    #section5 .tenbox{
+        width:100%;
+        height:auto;
+    }
+
+    /* footer */
+
+    #footer .footer_nav,
+    #footer .footer_bottom{
+        flex-direction:column;
+        align-items:flex-start;
+        gap:30px;
+    }
+
+    #footer .footer_l{
+        flex-wrap:wrap;
+        gap:10px;
+    }
+
+    #footer .footer_l li::after{
+        display:none;
+    }
+
+}

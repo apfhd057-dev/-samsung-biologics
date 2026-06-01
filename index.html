@@ -6,31 +6,143 @@
     <title>Samsung Biologics</title>
     <link rel="stylesheet" href="./css/reset.css">
     <link rel="stylesheet" href="./css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <style>
+        /* 웹브라우저 스크롤 없애는 스타일 */
+        html,
+        body {
+            overflow-x: hidden;
+
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        html::-webkit-scrollbar,
+        body::-webkit-scrollbar {
+            display: none;
+        }
+    </style>
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/bundled/lenis.min.js"></script>
+
+    <script>
+    window.addEventListener('load', function() {    
+        // Lenis 객체를 생성합니다.
+        // Lenis는 부드러운 스크롤 효과를 만들어주는 라이브러리입니다.
+        const lenis = new Lenis({
+        // 스크롤이 부드럽게 따라오는 시간입니다.
+        // 숫자가 클수록 더 천천히, 부드럽게 움직입니다.
+        duration: 4,
+
+        // 마우스 휠 스크롤에 부드러운 효과를 적용합니다.
+        smoothWheel: true,
+
+        // 마우스 휠 스크롤 속도 배율입니다.
+        // 1은 기본 속도입니다.
+        wheelMultiplier: 1,
+
+        // 터치 스크롤 속도 배율입니다.
+        // 모바일에서 손가락으로 스크롤할 때 적용됩니다.
+        touchMultiplier: 2,
+        });
+
+        // requestAnimationFrame에서 실행할 함수입니다.
+        // time은 브라우저가 자동으로 넘겨주는 현재 애니메이션 시간입니다.
+        function raf(time) {
+        // Lenis에게 현재 프레임 시간을 전달해서
+        // 부드러운 스크롤 애니메이션을 계산하게 합니다.
+        lenis.raf(time);
+
+        // 다음 화면 프레임에서도 raf 함수를 다시 실행합니다.
+        // 이렇게 반복되면서 스크롤 애니메이션이 계속 갱신됩니다.
+        requestAnimationFrame(raf);
+        }
+
+        // raf 함수를 처음 실행합니다.
+        // 이후에는 raf 함수 내부에서 계속 반복 실행됩니다.
+        requestAnimationFrame(raf);
+    });  
+    </script>
+
+
+    <script src="./js/scroll_ani.js"></script>
+    <script src="./js/service.js"></script>
+    <script src="./js/esg.js"></script>
+   
 </head>
 <body>
     <div id="wrap">
         <main id="main">
-            <header id="header">
-                <h1 class="logo">
-                    <img src="./images/logo.png" alt="" srcset="">
-                </h1>
-                <nav id="nav">
-                    <ul class="menu">
-                        <li><a href="./aboutus.html">ABOUT US</a></li>
-                        <li><a href="./ourservices.html">Our Services</a></li>
-                        <li><a href="./sustainability.html">Sustainability</a></li>
-                        <li><a href="./careers.html">Careers</a></li>
-                        <li><a href="./newsroom.html">Newsroom</a></li>
-                    </ul>
-                </nav>
-                <div id="info">
-                    <ul class="info_r">
-                        <li><a href="">IR</a></li>
-                        <li><a href="">CONTACT US</a></li>
-                        <li><a href="">돋보기</a></li>
-                    </ul>
+            <section id="main_visual">
+                <video autoplay muted loop playsinline>
+                    <source src="./images/Sequence 01.mp4" type="video/mp4">
+                </video>
+
+                <div class="main_txt">
+                    <h2>Driven. For Life.</h2>
+                    <h5>고품질 바이오의약품으로 더 건강한 내일을 만들어갑니다.</h5>
+                    <p>후보 물질 탐색부터 상업 생산까지,삼성바이오로직스는 End-to-end CDMO<br>
+                        서비스를 통해 생명의 가치를 실현합니다.
+                    </p>
+                    <button><a href="./aboutus.html">About Us</a></button>
                 </div>
+            </section>
+            <header id="header">
+                <div class="header_inner">
+                    <h1 class="logo">
+                        <a href="#"><img src="./images/logo.png" class="logo_white" alt="" srcset=""></a>
+                    </h1>
+                    <nav id="nav">
+                        <ul class="menu">
+                            <li>
+                                <a href="./aboutus.html">ABOUT US</a>
+                                <ul class="sub">
+                                    <li><a href="./aboutus.html">삼성바이오로직스</a></li>
+                                    <li><a href="#">리더십</a></li>
+                                    <li><a href="#">사업장 소개</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="./ourservices.html">Our Services</a>
+                                <ul class="sub">
+                                    <li><a href="./ourservices.html">Research Services</a></li>
+                                    <li><a href="./d_research.html">Development Services</a></li>
+                                    <li><a href="./m_research.html">Manufacturing Services</a></li>
+                                    <li><a href="./a_research.html">Advanced Modalities</a></li>
+                                    <li><a href="./q_research.html">Quality Services</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="./sustainability.html">Sustainability</a>
+                                <ul class="sub">
+                                    <li><a href="#">ESG 경영</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="./careers.html">Careers</a>
+                                <ul class="sub">
+                                    <li><a href="#">인재상</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="./newsroom.html">Newsroom</a>
+                                <ul class="sub">
+                                    <li><a href="#">뉴스룸</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </nav>
+                    <div id="info">
+                        <ul class="info_r">
+                            <li><a href="">IR</a></li>
+                            <li><a href="">CONTACT US</a></li>
+                            <li><a href=""><img src="./images/search.png" alt="" srcset=""></a></li>
+                        </ul>
+                    </div>
+                    <button class="mobile_btn">
+                        <i class="fa-solid fa-bars"></i>
+                    </button>
+                </div>
+                <div class="submn_area"></div>
+                
             </header>
+            
         </main>
         <section id="services">
             <div class="services_section">
@@ -39,9 +151,13 @@
                     <h3>차세대 바이오 생산 솔루션</h3>
                     <h1>Why <span> Samsung <br> Biologics?</span></h1>
                     <p class="txt1">연구·개발·생산 전 과정을 아우르는 통합 바이오 서비스를 제공합니다.</p>
-                    <h4 class="service_title">오가노이드 (Organoids)</h4>
+                    <h4 class="service_title"><mark>오가노이드 (Organoids)</mark></h4>
                     <p class="txt2 service_desc">환자 유래 오가노이드 (Patient-Derived Organoids) 기반의 약물 스크리닝<br> 서비스로 신약 후보 물질의 효능을 평가합니다.</p>
-                    <button>VIEW MORE</button>
+                    <button>
+                        <a href="./ourservices.html" class="service_link">
+                            VIEW MORE
+                        </a>
+                    </button>
                 </div>
                 <div class="services_img">
                     <img class="service_img" src="./images/Original_Loop_high_img.png" alt="">
@@ -54,10 +170,8 @@
                     <button data-index="4">New Modalities</button>
                 </div>
             </div>
-            
-            
         </section>
-        <section id="performance">
+        <section id="performance" class="fade-up">
             <div class="performance_inner">
                 <h5>Powered by Innovation</h5>
                 <h3>혁신으로 증명되는 성과</h3>
@@ -85,35 +199,49 @@
         </section>
         <section id="esg">
             <div class="esg_inner">
-                <div class="esg_txt">
-                    <h5>Sustainable Science for a Better Tomorrow</h5>
-                    <h3>더 나은 미래를 위한<br>지속가능한 바이오 혁신</h3>
-                    <p class="txt1">삼성바이오로직스는 환경과 사회, 책임경영을 기반으로<br>
-                    <span>인류의 건강한 삶</span>과 <span>지속가능한 미래</span>를 만들어갑니다.</p>
-
-                    <ul class="esg_section">
-                        <li>
-                            <h4><span>E</span>nvironmental</h4>
-                            <p>지속가능한 바이오<br>
-                                생산체계 구축</p>
-                        </li>
-                        <li>
-                            <h4><span>S</span>ocial</h4>
-                            <p>바이오 혁신을 통한<br>
-                                사회적 가치 실현</p>
-                        </li>
-                        <li>
-                            <h4><span>G</span>overnance</h4>
-                            <p>글로벌 수준의<br>
-                                책임경영 강화</p>
-                        </li>
-                    </ul>
-                    <button>VIEW MORE</button>
-                </div>
                 <div class="esg_img">
                     <img src="./images/golobal.gif" alt="" srcset="">
                 </div>
+                <div class="esg_title">
+                        <h5>Sustainable Science for a Better Tomorrow</h5>
+                        <h3>지속가능한 바이오 혁신</h3>
+                        <p>환경과 사회, 책임경영을 기반으로 인류의 건강한 삶과 지속가능한 미래를 만들어갑니다.</p>
+                </div>
+                <div class="esg_right">
+                    <div class="esg_card">
+                        <div class="esg_simg">
+                            <img src="./images/esg_img1.png" alt="">
+                            <video src="./images/Sequence 01_4.mp4" muted loop playsinline></video>
+                        </div>
+                        <div class="esg_txt">
+                            <h4>Environmental</h4>
+                            <p>친환경 생산 공정과 탄소 저감 운영</p>
+                        </div>
+                    </div>
+                    <div class="esg_card">
+                        <div class="esg_simg">
+                            <img src="./images/esg_img2.png" alt="">
+                            <video src="./images/Sequence 01_3.mp4" muted loop playsinline></video>
+                        </div>
+                        <div class="esg_txt">
+                            <h4>Social</h4>
+                            <p>바이오 혁신을 통한 사회적 가치 실현</p>
+                        </div>
+                    </div>
+                    <div class="esg_card">
+                        <div class="esg_simg">
+                            <img src="./images/esg_img3.png" alt="">
+                            <video src="./images/Sequence 01_2.mp4" muted loop playsinline></video>
+                        </div>
+                        <div class="esg_txt">
+                            <h4>Governance</h4>
+                            <p>글로벌 수준의 책임경영 강화</p>
+                        </div>
+                    </div>
+                    
+                </div>
             </div>
+           
         </section>
         <section id="archive">
             <div class="archive_inner">
@@ -128,6 +256,7 @@
             <div><img src="./images/box_img2.webp" alt=""></div>
             <div><img src="./images/box_img3.webp" alt=""></div>
             <div><img src="./images/box_img4.webp" alt=""></div>
+            <div><img src="./images/box_img5.webp" alt=""></div>
         </div>
 
         <button class="archive_next">›</button>
@@ -136,7 +265,7 @@
     <div class="archive_pagination"></div>
 
         </section>
-        <section id="newsroom">
+     <section id="newsroom">
             <div class="newsroom_inner">
                 <div class="news_text">
                     <h5>Latest news</h5>
@@ -145,10 +274,10 @@
 
                     <div class="circle">
                         <div class="circle_l">
-                            <img src="./images/arrow1_left.png" alt="">
+                              &#10094;
                         </div>
                         <div class="circle_r">
-                            <img src="./images/arrow1_right.png" alt="">
+                            &#10095;
                         </div>
                     </div>
                 </div>
@@ -162,10 +291,20 @@
                     <div class="news_item">
                         <img src="./images/news2.png" alt="">
                         <h4>Press Releases</h4>
-                        <p>삼성 라이프사이언스펀드, 美 바이오텍 '카토그래피 바이오사이언스' 투자</p>
+                        <p>삼성바이오로직스, 다우존스 베스트인클래스 월드 지수 5년 연속 편입</p>
                     </div>
                     <div class="news_item">
                         <img src="./images/news3.png" alt="">
+                        <h4>Press Releases</h4>
+                        <p>삼성바이오로직스, 1분기 매출 1조2571억원·영업이익 5808억원 기록</p>
+                    </div>
+                    <div class="news_item">
+                        <img src="./images/news4.png" alt="">
+                        <h4>Press Releases</h4>
+                        <p>삼성 라이프사이언스펀드, 美 바이오텍 '카토그래피 바이오사이언스' 투자</p>
+                    </div>
+                    <div class="news_item">
+                        <img src="./images/news5.png" alt="">
                         <h4>Press Releases</h4>
                         <p>삼성 라이프사이언스펀드, 美 바이오텍 '카토그래피 바이오사이언스' 투자</p>
                     </div>
@@ -280,168 +419,13 @@
             </div>
         </footer>
     </div>
-    
-    <script>
-const serviceData = [
-    {
-        title: "오가노이드 (Organoids)",
-        desc: "환자 유래 오가노이드 (Patient-Derived Organoids) 기반의 약물 스크리닝<br>서비스로 신약 후보 물질의 효능을 평가합니다.",
-        img: "./images/Original_Loop_high_img.png"
-    },
-    {
-        title: "개발 서비스 (Development)",
-        desc: "세포주 개발부터 공정 개발, 분석법 개발까지<br>신약 개발 단계에 필요한 통합 CMC 서비스를 제공합니다.",
-        img: "./images/img_overview_02.png"
-    },
-    {
-        title: "생산 서비스 (Manufacturing)",
-        desc: "소규모 파일럿 생산부터 대규모 상업 생산까지<br>고객의 개발 전략에 맞춘 유연한 생산 서비스를 제공합니다.",
-        img: "./images/manufacturing_img.png"
-    },
-    {
-        title: "품질 관리 (Quality)",
-        desc: "국제 규제 기준에 부합하는 품질 시스템을 기반으로<br>안정적이고 신뢰도 높은 바이오 생산 환경을 제공합니다.",
-        img: "./images/quality_img.png"
-    },
-    {
-        title: "신규 모달리티 (New Modalities)",
-        desc: "ADC, mRNA 등 차세대 바이오의약품 분야까지<br>확장 가능한 생산 솔루션을 제공합니다.",
-        img: "./images/new_modalities_img.png"
-    }
-];
-
-const menuBtns = document.querySelectorAll(".services_menu button");
-const title = document.querySelector(".service_title");
-const desc = document.querySelector(".service_desc");
-const img = document.querySelector(".service_img");
-
-menuBtns.forEach(function(btn) {
-    btn.addEventListener("click", function() {
-        const index = btn.dataset.index;
-        const data = serviceData[index];
-
-        title.innerHTML = data.title;
-        desc.innerHTML = data.desc;
-        img.src = data.img;
-
-        menuBtns.forEach(function(item) {
-            item.classList.remove("active");
-        });
-
-        btn.classList.add("active");
-    });
-});
-
-const counters = document.querySelectorAll(".count");
-let isCounted = false;
-
-function countUp() {
-    counters.forEach(function(counter) {
-        const target = Number(counter.dataset.target);
-        const suffix = counter.dataset.suffix;
-        let current = 0;
-        const speed = 30;
-        const step = target / 60;
-
-        const timer = setInterval(function() {
-            current += step;
-
-            if (current >= target) {
-                counter.innerHTML = target + suffix;
-                clearInterval(timer);
-            } else {
-                counter.innerHTML = Math.floor(current) + suffix;
-            }
-        }, speed);
-    });
-}
-
-window.addEventListener("scroll", function() {
-    const performance = document.querySelector("#performance");
-    const performanceTop = performance.getBoundingClientRect().top;
-    const windowHeight = window.innerHeight;
-
-    if (performanceTop < windowHeight - 150 && isCounted === false) {
-        countUp();
-        isCounted = true;
-    }
-});
-
-const archiveBox = document.querySelector("#archive .box");
-let archiveItems = document.querySelectorAll("#archive .box div");
-
-const archivePrev = document.querySelector(".archive_prev");
-const archiveNext = document.querySelector(".archive_next");
-
-let archiveIndex = 1;
-let archiveTimer;
-const gap = 100;
-
-// 앞뒤 복제
-const firstClone = archiveItems[0].cloneNode(true);
-const lastClone = archiveItems[archiveItems.length - 1].cloneNode(true);
-
-archiveBox.appendChild(firstClone);
-archiveBox.insertBefore(lastClone, archiveItems[0]);
-
-archiveItems = document.querySelectorAll("#archive .box div");
-
-function archiveMove(transition = true) {
-    archiveBox.style.transition = transition ? "transform 0.7s ease" : "none";
-
-    archiveItems.forEach(item => item.classList.remove("active"));
-    archiveItems[archiveIndex].classList.add("active");
-
-    const itemWidth = archiveItems[0].offsetWidth;
-    const moveX = archiveIndex * (itemWidth + gap);
-
-    archiveBox.style.transform =
-        "translateX(calc(50% - 450px - " + moveX + "px))";
-}
-
-function nextSlide() {
-    archiveIndex++;
-    archiveMove(true);
-}
-
-function prevSlide() {
-    archiveIndex--;
-    archiveMove(true);
-}
-
-archiveBox.addEventListener("transitionend", function() {
-    if (archiveIndex === archiveItems.length - 1) {
-        archiveIndex = 1;
-        archiveMove(false);
-    }
-
-    if (archiveIndex === 0) {
-        archiveIndex = archiveItems.length - 2;
-        archiveMove(false);
-    }
-});
-
-archiveNext.addEventListener("click", function() {
-    nextSlide();
-    restartAuto();
-});
-
-archivePrev.addEventListener("click", function() {
-    prevSlide();
-    restartAuto();
-});
-
-function startAuto() {
-    archiveTimer = setInterval(nextSlide, 3000);
-}
-
-function restartAuto() {
-    clearInterval(archiveTimer);
-    startAuto();
-}
-
-archiveMove(false);
-startAuto();
-</script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/ScrollTrigger.min.js"></script>
+    <script src="https://unpkg.com/lenis@1.1.14/dist/lenis.min.js"></script>
+    <script src="./js/scroll_ani.js"></script>
+    <script src="./js/service.js"></script>
+    <script src="./js/esg.js"></script>
+    <script src="./js/main.js"></script>
 </body>
 </html>
