@@ -149,4 +149,21 @@ function raf(time) {
 
 requestAnimationFrame(raf);
 
+const motionItems = document.querySelectorAll(
+    ".archive_inner h5, .archive_inner h3, .archive_slider, .archive_pagination, .news_text, .news_list, .notice_l, .notice_r, #mcontact, .mcontact_l, .mcontact_r button, .msite_menu"
+);
 
+const observer = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+        if(entry.isIntersecting){
+            entry.target.classList.add("act");
+        }
+    });
+}, {
+    threshold: 0.15,
+    rootMargin: "0px 0px -10% 0px"
+});
+
+motionItems.forEach(function(item){
+    observer.observe(item);
+});

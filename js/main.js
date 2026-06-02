@@ -231,10 +231,15 @@ function archiveMove(transition = true) {
     archiveDots[realIndex].classList.add("active");
 
     const itemWidth = archiveItems[0].offsetWidth;
-    const moveX = archiveIndex * (itemWidth + gap);
+    const currentGap = window.innerWidth <= 768 ? 0 : 100;
+    const moveX = archiveIndex * (itemWidth + currentGap);
 
-    archiveBox.style.transform =
-        "translateX(calc(50% - 450px - " + moveX + "px))";
+    if (window.innerWidth <= 768) {
+        archiveBox.style.transform = "translateX(-" + moveX + "px)";
+    } else {
+        archiveBox.style.transform =
+            "translateX(calc(50% - " + (itemWidth / 2) + "px - " + moveX + "px))";
+    }
 }
 
 function nextSlide() {

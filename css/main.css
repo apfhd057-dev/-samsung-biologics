@@ -796,7 +796,7 @@
     opacity:1;
 }
 
-.archive_slider {
+#archive .archive_slider {
     position: relative;
     width: 100%;
     overflow: hidden;
@@ -804,7 +804,7 @@
     opacity:0;
     transition:all 1s;
 }
-.archive_slider.act{
+#archive .archive_slider.act{
     transform: translateY(0px);
     opacity:1;
 }
@@ -837,8 +837,8 @@
     object-fit: cover;
 }
 
-.archive_prev,
-.archive_next {
+#archive .archive_prev,
+#archive .archive_next {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
@@ -850,33 +850,42 @@
     cursor: pointer;
 }
 
-.archive_prev {
+#archive .archive_prev {
     left: 23%;
 }
 
-.archive_next {
+#archive .archive_next {
     right: 23%;
 }
 
-.archive_pagination {
+#archive .archive_pagination {
     display: flex;
     justify-content: center;
     gap: 20px;
     margin-top: 35px;
 }
 
-.archive_pagination span {
+#archive .archive_pagination span {
     width: 14px;
     height: 14px;
     border-radius: 50%;
     background: #d9d9d9;
     cursor: pointer;
 }
+#archive .archive_pagination{
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
 
-.archive_pagination span.active {
+#archive .archive_pagination.act{
+    opacity: 1;
+}
+
+#archive .archive_pagination span.active {
     background: #23398C;
     outline: 4px solid #dfe5f8;
 }
+
 #newsroom {
     width: 100%;
     overflow: hidden;
@@ -1565,29 +1574,21 @@
         display: block;
     }
 
-    #archive {
-        padding: 100px 0;
+    #archive .archive_slider{
+        width: 86vw;
+        margin: 0 auto;
+        overflow: hidden;
     }
 
-    #archive .archive_inner h3 {
-        font-size: 34px;
+    #archive .box{
+        gap: 0;
     }
 
-    #archive .box {
-        gap: 30px;
-    }
-
-    #archive .box div {
-        flex: 0 0 80vw;
-        height: 300px;
-    }
-
-    .archive_prev {
-        left: 5%;
-    }
-
-    .archive_next {
-        right: 5%;
+    #archive .box div{
+        flex: 0 0 86vw;
+        height: 240px;
+        opacity: 1;
+        transform: scale(1);
     }
 
     #newsroom .news_text h3 {
