@@ -51,3 +51,49 @@ window.addEventListener("load", function(){
     }, 300);
 
 });
+
+const s5Wrap = document.querySelector("#section5 .s5_wrap");
+const s5Bar = document.querySelector("#section5 .s5_progress_bar");
+
+if(s5Wrap){
+    let isDown = false;
+    let startX = 0;
+    let scrollLeft = 0;
+
+    s5Wrap.addEventListener("mousedown", function(e){
+        isDown = true;
+        s5Wrap.classList.add("dragging");
+        startX = e.pageX;
+        scrollLeft = s5Wrap.scrollLeft;
+    });
+
+    window.addEventListener("mouseup", function(){
+        isDown = false;
+        s5Wrap.classList.remove("dragging");
+    });
+
+    s5Wrap.addEventListener("mousemove", function(e){
+        if(!isDown) return;
+        e.preventDefault();
+
+        const moveX = e.pageX - startX;
+        s5Wrap.scrollLeft = scrollLeft - moveX;
+    });
+
+    function updateS5Progress(){
+        if(!s5Bar) return;
+
+        const maxScroll = s5Wrap.scrollWidth - s5Wrap.clientWidth;
+        const progress = maxScroll <= 0 ? 0 : s5Wrap.scrollLeft / maxScroll;
+
+        const barWidth = (s5Wrap.clientWidth / s5Wrap.scrollWidth) * 100;
+        const maxLeft = 100 - barWidth;
+
+        s5Bar.style.width = barWidth + "%";
+        s5Bar.style.left = (progress * maxLeft) + "%";
+    }
+
+    s5Wrap.addEventListener("scroll", updateS5Progress);
+    window.addEventListener("resize", updateS5Progress);
+    updateS5Progress();
+}

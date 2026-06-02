@@ -503,13 +503,9 @@
         transform 1s ease,
         filter 1s ease;
 }
-
-/* =========================
-   Advanced Modalities 반응형
-========================= */
+/* Advanced Modalities Responsive Fix */
 
 @media screen and (max-width:1600px){
-
     #header .header_inner,
     #section1,
     #section2,
@@ -517,19 +513,18 @@
     #section4,
     #section5,
     #section6,
+    #section7,
     #section8,
     #footer .footer_nav,
     #footer .footer_bottom{
-        max-width:90%;
-    }
-
-    #section7 .c_group{
         width:90%;
+        max-width:1600px;
+        margin-left:auto;
+        margin-right:auto;
     }
 }
 
 @media screen and (max-width:1200px){
-
     #nav,
     #info{
         display:none;
@@ -539,19 +534,16 @@
         display:block;
         border:none;
         background:none;
-        color:#111;
         font-size:34px;
-        cursor:pointer;
+        color:#111;
     }
 
-    #section1,
-    #section5{
+    #section1{
         flex-direction:column;
         gap:60px;
     }
 
-    #section1 .s1img,
-    #section5 .s1img{
+    #section1 .s1img{
         width:100%;
         height:auto;
         text-align:center;
@@ -559,83 +551,50 @@
 
     #section1 .s1img img,
     #section5 .s1img img{
-        width:70%;
+        max-width:100%;
+        height:auto;
     }
 
-    #section2 .k_group,
-    #section4 .k_group,
-    #section6 .k_group,
-    #section8 .k_group{
+    .k_group,
+    .w_group{
+        display:flex;
         flex-wrap:wrap;
         gap:30px;
     }
 
-    #section2 .k_box,
-    #section4 .k_box,
-    #section8 .k_box{
-        width:calc(50% - 15px);
-        height:auto;
+    .k_box,
+    .w_box{
+        width:calc(50% - 15px) !important;
+        height:auto !important;
+        box-sizing:border-box;
     }
 
-    #section6 .k_box{
-        width:calc(50% - 15px);
-        height:auto;
-    }
-
-    #section2 .k_box img,
-    #section4 .k_box img,
-    #section6 .k_box img,
-    #section8 .k_box img{
-        width:100%;
-        height:auto;
-    }
-
-    #section3 .w_group{
-        flex-wrap:wrap;
-        gap:30px;
-    }
-
-    #section3 .w_box{
-        width:calc(50% - 15px);
-    }
-
-    #section7{
-        width:100%;
-    }
-
-    #section7 .s1img{
-        width:100%;
-        background:#f7f7f7;
+    .k_box img{
+        width:100% !important;
+        height:auto !important;
     }
 
     #section7 .c_group{
-        width:90%;
+        width:100%;
         height:auto;
-        padding:80px 0;
         flex-wrap:wrap;
-        gap:50px 30px;
+        gap:40px 30px;
+        padding:70px 0;
     }
 
-    #section7 .c_group > div:has(img){
+    #section7 .c_group > div:not(.circle1){
         display:none;
     }
 
     #section7 .circle1{
         width:calc(33.333% - 30px);
     }
-
-    #section7 .circle{
-        width:170px;
-        height:170px;
-        margin-bottom:30px;
-    }
 }
 
 @media screen and (max-width:768px){
-
     #header .header_inner{
+        width:90%;
         height:80px;
-        max-width:90%;
     }
 
     #section1,
@@ -644,125 +603,65 @@
     #section4,
     #section5,
     #section6,
+    #section7,
     #section8{
-        max-width:90%;
+        width:90%;
         padding:80px 0;
     }
 
-    #section7{
-        width:100%;
-        padding:80px 0;
-    }
-
-    #section1 .s1txt_l h4,
-    #section2 .s1txt_l h4,
-    #section4 .s1txt_l h4,
-    #section5 .s1txt_l h4,
-    #section6 .s1txt_l h4,
-    #section8 .s1txt_l h4{
+    .s1txt_l h4{
         font-size:16px;
         margin-bottom:20px;
     }
 
-    #section1 .s1txt_l h1,
-    #section2 .s1txt_l h1,
-    #section3 .s1txt_l h1,
-    #section4 .s1txt_l h1,
-    #section5 .s1txt_l h1,
-    #section6 .s1txt_l h1,
-    #section8 .s1txt_l h1{
-        font-size:clamp(30px, 7vw, 42px);
+    .s1txt_l h1{
+        font-size:clamp(30px, 7vw, 42px) !important;
         line-height:1.25;
-        margin-bottom:40px;
+        margin-bottom:40px !important;
     }
 
-    #section1 .s1txt_l p,
-    #section5 .s1txt_l p{
+    .s1txt_l p{
         font-size:15px;
         line-height:1.7;
         word-break:keep-all;
-        margin-bottom:50px;
     }
 
-    #section1 button,
-    #section5 button{
-        width:160px;
-        height:46px;
-        font-size:15px;
-    }
-
-    #section1 .s1img img,
-    #section5 .s1img img{
-        width:85%;
-    }
-
-    #section2 .k_group,
-    #section4 .k_group,
-    #section6 .k_group,
-    #section8 .k_group{
+    .k_group,
+    .w_group{
         flex-direction:column;
+        gap:24px;
     }
 
-    #section2 .k_box,
-    #section4 .k_box,
-    #section6 .k_box,
-    #section8 .k_box{
-        width:100%;
-        height:auto;
+    .k_box,
+    .w_box{
+        width:100% !important;
+    }
+
+    .k_box{
         padding-bottom:30px;
     }
 
-    #section2 .k_box img,
-    #section4 .k_box img,
-    #section6 .k_box img,
-    #section8 .k_box img{
-        width:100%;
-        height:auto;
-        margin-bottom:30px;
-    }
-
-    #section2 .k_box span,
-    #section4 .k_box span,
-    #section6 .k_box span,
-    #section8 .k_box span{
+    .k_box span{
         font-size:18px;
         line-height:1.4;
         padding:0 20px;
     }
 
-    #section2 .k_box p,
-    #section4 .k_box p,
-    #section6 .k_box p,
-    #section8 .k_box p{
+    .k_box p{
         font-size:15px;
         line-height:1.7;
         padding:0 20px;
-        word-break:keep-all;
     }
 
-    #section3 .w_group{
-        flex-direction:column;
-    }
-
-    #section3 .w_box{
-        width:100%;
-        height:auto;
-        padding:36px 24px;
-    }
-
-    #section3 .w_box h5{
-        margin-bottom:50px;
-    }
-
-    #section3 .w_box h2{
-        font-size:22px;
+    .w_box{
+        padding:36px 24px !important;
     }
 
     #section7 .c_group{
-        width:90%;
         flex-direction:column;
         gap:32px;
-        padding:50px 0;
+        padding:30px;
+        box-sizing: border-box;
     }
 
     #section7 .circle1{
@@ -782,7 +681,7 @@
 
     #footer .footer_nav,
     #footer .footer_bottom{
-        max-width:90%;
+        width:90%;
         flex-direction:column;
         align-items:flex-start;
         gap:30px;
