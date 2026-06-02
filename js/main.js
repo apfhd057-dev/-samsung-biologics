@@ -1,48 +1,62 @@
 $(document).ready(function(){
-            $('.sub').hide();
-            $('.submn_area').hide().css({height:0});
+    $('.sub').hide();
+    $('.submn_area').hide().css({height:0});
 
-            $('#header').mouseenter(function(){
-                $('.submn_area')
-                    .stop(true,true)
-                    .show()
-                    .animate({height:250},200);
+    $('#header').mouseenter(function(){
+        // $('.submn_area').stop(true,true).show().animate({height:250},200);
+        // $('.sub').stop(true,true).fadeIn(150);
+        $(this).addClass("act");
+    });
 
-                $('.sub')
-                    .stop(true,true)
-                    .fadeIn(150);
-            });
-
-            $('#header').mouseleave(function(){
-                $('.sub')
-                    .stop(true,true)
-                    .fadeOut(100);
-
-                $('.submn_area')
-                    .stop(true,true)
-                    .delay(50)
-                    .animate({height:0},150,function(){
-                        $(this).hide();
-                    });
-            });
+    $('#header').mouseleave(function(){
+        $('.sub').stop(true,true).fadeOut(100);
+        $('.submn_area').stop(true,true).delay(0).animate({height:0},150,function(){
+            $(this).hide();
         });
+        $(this).removeClass("act");
+    });
+    $('#nav').mouseenter(function(){
+        $('.submn_area').stop(true,true).show().animate({height:250},200);
+        $('.sub').stop(true,true).fadeIn(150);
+    });
+    // $('#nav').mouseleave(function(){
+    //     $('.sub').stop(true,true).fadeOut(100);
+    //     $('.submn_area').stop(true,true).delay(0).animate({height:0},150,function(){
+    //         $(this).hide();
+    //     });  
+    // });
+    
+  
+    $('.submn_area').mouseleave(function(){
+        $('#header').removeClass("act");
+        $('.sub').stop(true,true).fadeOut(100);
+        $('.submn_area').stop(true,true).delay(0).animate({height:0},150,function(){
+            $(this).hide();
+        });
+        
+    });
+});
 
 const header = document.querySelector("#header");
 const logo = document.querySelector(".logo img");
 const searchicon = document.querySelector(".info_r img");
 
-header.addEventListener("mouseenter", function(){
-    header.classList.add("on");
-    logo.src = "./images/logo_b.png";
-    searchicon.src = "./images/s_search_1.png";
-});
+if(header){
+    header.addEventListener("mouseenter", function(){
+        header.classList.add("on");
+        if(logo) logo.src = "./images/Logo_B.svg";
+        if(searchicon) searchicon.src = "./images/s_search_1.png";
+    });
 
-header.addEventListener("mouseleave", function(){
-    header.classList.remove("on");
-    logo.src = "./images/logo.png";
-    searchicon.src = "./images/search.png";
-});
+    header.addEventListener("mouseleave", function(){
+        header.classList.remove("on");
+        if(logo) logo.src = "./images/Logo_w.svg";
+        if(searchicon) searchicon.src = "./images/search.png";
+    });
+}
 
+
+/* SERVICES */
 const serviceData = [
     {
         title: "오가노이드 (Organoids)",
@@ -88,29 +102,25 @@ function changeService(index) {
     if (currentServiceIndex === index) return;
 
     currentServiceIndex = index;
-
     const data = serviceData[index];
 
-    title.innerHTML = data.title;
-    desc.innerHTML = data.desc;
-    img.src = data.img;
-    serviceLink.href = data.link;
+    if(title) title.innerHTML = data.title;
+    if(desc) desc.innerHTML = data.desc;
+    if(img) img.src = data.img;
+    if(serviceLink) serviceLink.href = data.link;
 
     menuBtns.forEach(function(item) {
         item.classList.remove("active");
     });
 
-    menuBtns[index].classList.add("active");
+    if(menuBtns[index]) menuBtns[index].classList.add("active");
 
-    title.classList.remove("service_motion");
-    desc.classList.remove("service_motion");
-    img.classList.remove("service_motion");
-
-    void title.offsetWidth;
-
-    title.classList.add("service_motion");
-    desc.classList.add("service_motion");
-    img.classList.add("service_motion");
+    [title, desc, img].forEach(function(el){
+        if(!el) return;
+        el.classList.remove("service_motion");
+        void el.offsetWidth;
+        el.classList.add("service_motion");
+    });
 }
 
 menuBtns.forEach(function(btn) {
@@ -120,13 +130,15 @@ menuBtns.forEach(function(btn) {
     });
 });
 
+
+/* PERFORMANCE COUNT */
 const counters = document.querySelectorAll(".count");
 let isCounted = false;
 
 function countUp() {
     counters.forEach(function(counter) {
         const target = Number(counter.dataset.target);
-        const suffix = counter.dataset.suffix;
+        const suffix = counter.dataset.suffix || "";
         let current = 0;
         const speed = 30;
         const step = target / 60;
@@ -143,9 +155,11 @@ function countUp() {
         }, speed);
     });
 }
-window.addEventListener("scroll", function() {
 
+window.addEventListener("scroll", function() {
     const performance = document.querySelector("#performance");
+    if(!performance) return;
+
     const performanceTop = performance.getBoundingClientRect().top;
     const windowHeight = window.innerHeight;
 
@@ -153,18 +167,14 @@ window.addEventListener("scroll", function() {
         performance.classList.add("active");
     }
 
-});
-window.addEventListener("scroll", function() {
-    const performance = document.querySelector("#performance");
-    const performanceTop = performance.getBoundingClientRect().top;
-    const windowHeight = window.innerHeight;
-
     if (performanceTop < windowHeight - 150 && isCounted === false) {
         countUp();
         isCounted = true;
     }
-});
+}, { passive:true });
 
+
+/* ARCHIVE */
 const archiveBox = document.querySelector("#archive .box");
 let archiveItems = document.querySelectorAll("#archive .box div");
 
@@ -172,120 +182,119 @@ const archivePrev = document.querySelector(".archive_prev");
 const archiveNext = document.querySelector(".archive_next");
 const archivePagination = document.querySelector(".archive_pagination");
 
-let archiveIndex = 1;
-let archiveTimer;
-const gap = 100;
-const realCount = archiveItems.length;
+if(archiveBox && archivePrev && archiveNext && archivePagination && archiveItems.length > 0){
 
-// pagination 만들기
-for (let i = 0; i < realCount; i++) {
-    const dot = document.createElement("span");
+    let archiveIndex = 1;
+    let archiveTimer;
+    const realCount = archiveItems.length;
 
-    if (i === 0) {
-        dot.classList.add("active");
+    for (let i = 0; i < realCount; i++) {
+        const dot = document.createElement("span");
+
+        if (i === 0) dot.classList.add("active");
+
+        dot.addEventListener("click", function() {
+            archiveIndex = i + 1;
+            archiveMove(true);
+            restartAuto();
+        });
+
+        archivePagination.appendChild(dot);
     }
 
-    dot.addEventListener("click", function() {
-        archiveIndex = i + 1;
+    const archiveDots = document.querySelectorAll(".archive_pagination span");
+
+    const firstClone = archiveItems[0].cloneNode(true);
+    const lastClone = archiveItems[archiveItems.length - 1].cloneNode(true);
+
+    archiveBox.appendChild(firstClone);
+    archiveBox.insertBefore(lastClone, archiveItems[0]);
+
+    archiveItems = document.querySelectorAll("#archive .box div");
+
+    function archiveMove(transition = true) {
+        archiveBox.style.transition = transition ? "transform 0.3s ease" : "none";
+
+        archiveItems.forEach(function(item) {
+            item.classList.remove("active");
+        });
+
+        if(archiveItems[archiveIndex]) {
+            archiveItems[archiveIndex].classList.add("active");
+        }
+
+        let realIndex = archiveIndex - 1;
+
+        if (realIndex < 0) realIndex = realCount - 1;
+        if (realIndex >= realCount) realIndex = 0;
+
+        archiveDots.forEach(function(dot) {
+            dot.classList.remove("active");
+        });
+
+        if(archiveDots[realIndex]) {
+            archiveDots[realIndex].classList.add("active");
+        }
+
+        const itemWidth = archiveItems[0].offsetWidth;
+        const currentGap = window.innerWidth <= 768 ? 0 : 100;
+        const moveX = archiveIndex * (itemWidth + currentGap);
+
+        if (window.innerWidth <= 768) {
+            archiveBox.style.transform = "translateX(-" + moveX + "px)";
+        } else {
+            archiveBox.style.transform =
+                "translateX(calc(50% - " + (itemWidth / 2) + "px - " + moveX + "px))";
+        }
+    }
+
+    function nextSlide() {
+        archiveIndex++;
         archiveMove(true);
+    }
+
+    function prevSlide() {
+        archiveIndex--;
+        archiveMove(true);
+    }
+
+    archiveBox.addEventListener("transitionend", function() {
+        if (archiveIndex === archiveItems.length - 1) {
+            archiveIndex = 1;
+            archiveMove(false);
+        }
+
+        if (archiveIndex === 0) {
+            archiveIndex = archiveItems.length - 2;
+            archiveMove(false);
+        }
+    });
+
+    archiveNext.addEventListener("click", function() {
+        nextSlide();
         restartAuto();
     });
 
-    archivePagination.appendChild(dot);
-}
-
-const archiveDots = document.querySelectorAll(".archive_pagination span");
-
-// 앞뒤 복제
-const firstClone = archiveItems[0].cloneNode(true);
-const lastClone = archiveItems[archiveItems.length - 1].cloneNode(true);
-
-archiveBox.appendChild(firstClone);
-archiveBox.insertBefore(lastClone, archiveItems[0]);
-
-archiveItems = document.querySelectorAll("#archive .box div");
-
-function archiveMove(transition = true) {
-    archiveBox.style.transition = transition ? "transform 0.3s ease" : "none";
-
-    archiveItems.forEach(function(item) {
-        item.classList.remove("active");
+    archivePrev.addEventListener("click", function() {
+        prevSlide();
+        restartAuto();
     });
 
-    archiveItems[archiveIndex].classList.add("active");
-
-    let realIndex = archiveIndex - 1;
-
-    if (realIndex < 0) {
-        realIndex = realCount - 1;
+    function startAuto() {
+        archiveTimer = setInterval(nextSlide, 3000);
     }
 
-    if (realIndex >= realCount) {
-        realIndex = 0;
+    function restartAuto() {
+        clearInterval(archiveTimer);
+        startAuto();
     }
 
-    archiveDots.forEach(function(dot) {
-        dot.classList.remove("active");
-    });
-
-    archiveDots[realIndex].classList.add("active");
-
-    const itemWidth = archiveItems[0].offsetWidth;
-    const currentGap = window.innerWidth <= 768 ? 0 : 100;
-    const moveX = archiveIndex * (itemWidth + currentGap);
-
-    if (window.innerWidth <= 768) {
-        archiveBox.style.transform = "translateX(-" + moveX + "px)";
-    } else {
-        archiveBox.style.transform =
-            "translateX(calc(50% - " + (itemWidth / 2) + "px - " + moveX + "px))";
-    }
-}
-
-function nextSlide() {
-    archiveIndex++;
-    archiveMove(true);
-}
-
-function prevSlide() {
-    archiveIndex--;
-    archiveMove(true);
-}
-
-archiveBox.addEventListener("transitionend", function() {
-    if (archiveIndex === archiveItems.length - 1) {
-        archiveIndex = 1;
-        archiveMove(false);
-    }
-
-    if (archiveIndex === 0) {
-        archiveIndex = archiveItems.length - 2;
-        archiveMove(false);
-    }
-});
-
-archiveNext.addEventListener("click", function() {
-    nextSlide();
-    restartAuto();
-});
-
-archivePrev.addEventListener("click", function() {
-    prevSlide();
-    restartAuto();
-});
-
-function startAuto() {
-    archiveTimer = setInterval(nextSlide, 3000);
-}
-
-function restartAuto() {
-    clearInterval(archiveTimer);
+    archiveMove(false);
     startAuto();
 }
 
-archiveMove(false);
-startAuto();
 
+/* NEWSROOM */
 const newsList = document.querySelector("#newsroom .news_list");
 const newsPrev = document.querySelector("#newsroom .circle_l");
 const newsNext = document.querySelector("#newsroom .circle_r");
@@ -294,62 +303,54 @@ const originalNewsItems = Array.from(
     document.querySelectorAll("#newsroom .news_item")
 );
 
-let newsIndex = 0;
-const visibleCount = 3;
-const maxIndex = originalNewsItems.length - visibleCount;
+if(newsList && newsPrev && newsNext && originalNewsItems.length > 0){
 
-function renderNews() {
-    newsList.innerHTML = "";
+    let newsIndex = 0;
+    const visibleCount = 3;
+    const maxIndex = Math.max(originalNewsItems.length - visibleCount, 0);
 
-    for (let i = newsIndex; i < newsIndex + visibleCount; i++) {
-        newsList.appendChild(originalNewsItems[i]);
+    function renderNews() {
+        newsList.innerHTML = "";
+
+        for (let i = newsIndex; i < newsIndex + visibleCount; i++) {
+            if(originalNewsItems[i]) newsList.appendChild(originalNewsItems[i]);
+        }
+
+        newsPrev.classList.remove("disabled", "active");
+        newsNext.classList.remove("disabled", "active");
+
+        if (newsIndex === 0) {
+            newsPrev.classList.add("disabled");
+        } else {
+            newsPrev.classList.add("active");
+        }
+
+        if (newsIndex === maxIndex) {
+            newsNext.classList.add("disabled");
+        } else {
+            newsNext.classList.add("active");
+        }
     }
 
-    newsPrev.classList.remove("disabled", "active");
-    newsNext.classList.remove("disabled", "active");
+    newsNext.addEventListener("click", function () {
+        if (newsIndex < maxIndex) {
+            newsIndex++;
+            renderNews();
+        }
+    });
 
-    if (newsIndex === 0) {
-        newsPrev.classList.add("disabled");
-    } else {
-        newsPrev.classList.add("active");
-    }
+    newsPrev.addEventListener("click", function () {
+        if (newsIndex > 0) {
+            newsIndex--;
+            renderNews();
+        }
+    });
 
-    if (newsIndex === maxIndex) {
-        newsNext.classList.add("disabled");
-    } else {
-        newsNext.classList.add("active");
-    }
+    renderNews();
 }
 
-newsNext.addEventListener("click", function () {
-    if (newsIndex < maxIndex) {
-        newsIndex++;
-        renderNews();
-    }
-});
 
-newsPrev.addEventListener("click", function () {
-    if (newsIndex > 0) {
-        newsIndex--;
-        renderNews();
-    }
-});
-
-renderNews();
-
-const esgSection = document.querySelector("#esg");
-
-window.addEventListener("scroll", function () {
-    const esgTop = esgSection.getBoundingClientRect().top;
-    const windowHeight = window.innerHeight;
-
-    if (esgTop < windowHeight * 0.3) {
-        esgSection.classList.add("active");
-    } else {
-        esgSection.classList.remove("active");
-    }
-}, { passive: true });
-
+/* SECTION POP */
 const popItems = document.querySelectorAll(
     ".services_section, .performance_inner, .archive_inner, .archive_slider, .newsroom_inner, .notice_inner, .mcontact_inner"
 );
@@ -372,53 +373,115 @@ function popOnScroll() {
 window.addEventListener("scroll", popOnScroll, { passive: true });
 popOnScroll();
 
-const esgCards = document.querySelectorAll("#esg .esg_card");
 
-window.addEventListener("scroll", function () {
+/* ESG */
+gsap.registerPlugin(ScrollTrigger);
 
-    const esgTop = esgSection.offsetTop;
-    const scrollY = window.scrollY;
+ScrollTrigger.matchMedia({
 
-    const progress = scrollY - esgTop;
+    "(min-width: 1201px)": function(){
 
-    // 지구본 이동 시작
-    if (progress > 150) {
-        esgSection.classList.add("active");
-    } else {
-        esgSection.classList.remove("active");
+        const esgSection = document.querySelector("#esg");
+        const esgImg = document.querySelector("#esg .esg_img");
+        const esgTitle = document.querySelector("#esg .esg_title");
+        const esgRight = document.querySelector("#esg .esg_right");
+        const esgCards = gsap.utils.toArray("#esg .esg_card");
+
+        if(esgSection && esgImg && esgTitle && esgRight && esgCards.length > 0){
+
+            gsap.set(esgImg, {
+                left: "50%",
+                top: "50%",
+                width: 900,
+                height: 900,
+                xPercent: -50,
+                yPercent: -50,
+                scale: 1.15
+            });
+
+            gsap.set(esgTitle, {
+                opacity: 0
+            });
+
+            gsap.set(esgRight, {
+                opacity: 0
+            });
+
+            gsap.set(esgCards, {
+                y: function(index){
+                    return 300 + index * 420;
+                }
+            });
+
+            const esgTl = gsap.timeline({
+                scrollTrigger: {
+                    trigger: "#esg",
+                    start: "top top",
+                    end: "+=3200",
+                    pin: true,
+                    scrub: 1,
+                    anticipatePin: 1
+                }
+            });
+
+            esgTl
+            // 가운데에서 크게 머무는 시간
+            .to({}, {
+                duration: 0.7
+            })
+
+            // 지구본 왼쪽 이동
+            .to(esgImg, {
+                left: "20%",
+                top: "67%",
+                width: 550,
+                height: 550,
+                scale: 1,
+                duration: 0.8,
+                ease: "power2.inOut"
+            })
+
+            // 제목 등장
+            .to(esgTitle, {
+                opacity: 1,
+                duration: 0.4
+            }, "-=0.3")
+
+            // 카드 등장
+            .to(esgRight, {
+                opacity: 1,
+                duration: 0.4
+            })
+
+            // 카드 위로 이동
+            .to(esgCards, {
+                y: function(index){
+                    return -620 + index * 350;
+                },
+                ease: "none",
+                duration: 1.8
+            });
+        }
+    },
+
+    "(max-width: 1200px)": function(){
+
+        const esgSection = document.querySelector("#esg");
+        const esgImg = document.querySelector("#esg .esg_img");
+        const esgTitle = document.querySelector("#esg .esg_title");
+        const esgRight = document.querySelector("#esg .esg_right");
+        const esgCards = gsap.utils.toArray("#esg .esg_card");
+
+        if(esgSection) esgSection.classList.remove("active");
+
+        gsap.set([esgImg, esgTitle, esgRight, esgCards], {
+            clearProps: "all"
+        });
     }
 
-    // 카드만 내려오기
-    if (progress > 300 && progress < 2800) {
-
-    esgCards.forEach(function(card, index) {
-
-        const moveY = (progress - 300) * 0.28;
-
-        card.style.transform =
-            "translateY(" + (moveY + index * 360) + "px)";
-    });
-
-}
-
 });
 
-document.querySelectorAll(".esg_simg").forEach(function (box) {
-  const video = box.querySelector("video");
-
-  if (!video) return;
-
-  box.addEventListener("mouseenter", function () {
-    video.currentTime = 0;
-    video.play();
-  });
-
-  box.addEventListener("mouseleave", function () {
-    video.pause();
-    video.currentTime = 0;
-  });
-});
-
+/* MAIN VISUAL SHRINK */
 window.addEventListener("scroll", function () {
     const visual = document.querySelector("#main_visual");
     if (!visual) return;
@@ -433,4 +496,3 @@ window.addEventListener("scroll", function () {
     visual.style.width = `${width}%`;
     visual.style.margin = "0 auto";
 });
-

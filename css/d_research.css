@@ -377,6 +377,22 @@
     width:48px;
     height: 36px;
 }
+/* 스크롤 */
+.motion{
+    opacity:0;
+    transform:translateY(120px) scale(0.96);
+    filter:blur(6px);
+}
+
+.motion.show{
+    opacity:1;
+    transform:translateY(0) scale(1);
+    filter:blur(0);
+    transition:
+        opacity 1s ease,
+        transform 1s ease,
+        filter 1s ease;
+}
 /* =========================
    Development 반응형
 ========================= */
@@ -403,7 +419,17 @@
     }
 }
 
+@media screen and (max-width:1600px){
+    #section5 .service_box{
+        height:auto;
+        flex-direction:column;
+        gap:40px;
+    }
 
+    #section5 .service_box_r img{
+        width:100%;
+    }
+}
 @media screen and (max-width:1200px){
 
     #nav,
@@ -466,15 +492,6 @@
         width:calc(50% - 15px);
     }
 
-    #section5 .service_box{
-        height:auto;
-        flex-direction:column;
-        gap:40px;
-    }
-
-    #section5 .service_box_r img{
-        width:100%;
-    }
 }
 
 

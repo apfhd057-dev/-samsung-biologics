@@ -26,3 +26,28 @@ $(document).ready(function(){
                     });
             });
         });
+
+window.addEventListener("load", function(){
+
+    const motionItems = document.querySelectorAll(".motion");
+
+    setTimeout(function(){
+
+        const observer = new IntersectionObserver(function(entries){
+            entries.forEach(function(entry){
+                if(entry.isIntersecting){
+                    entry.target.classList.add("show");
+                }
+            });
+        }, {
+            threshold:0.15,
+            rootMargin:"0px 0px -8% 0px"
+        });
+
+        motionItems.forEach(function(item){
+            observer.observe(item);
+        });
+
+    }, 300);
+
+});
