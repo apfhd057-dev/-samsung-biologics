@@ -496,3 +496,95 @@ window.addEventListener("scroll", function () {
     visual.style.width = `${width}%`;
     visual.style.margin = "0 auto";
 });
+
+window.addEventListener("load", function(){
+
+    const mobileBtn = document.querySelector(".mobile_btn");
+
+    const mobileMenu = document.createElement("div");
+    mobileMenu.className = "mobile_menu";
+
+    mobileMenu.innerHTML = `
+        <button class="mobile_menu_close">×</button>
+        <ul class="m_menu">
+            <li>
+                <a href="./aboutus.html">ABOUT US</a>
+                <ul class="m_sub">
+                    <li><a href="./aboutus.html">삼성바이오로직스</a></li>
+                    <li><a href="#">리더십</a></li>
+                    <li><a href="#">사업장 소개</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="./ourservices.html">Our Services</a>
+                <ul class="m_sub">
+                    <li><a href="./ourservices.html">Research Services</a></li>
+                    <li><a href="./d_research.html">Development Services</a></li>
+                    <li><a href="./m_research.html">Manufacturing Services</a></li>
+                    <li><a href="./a_research.html">Advanced Modalities</a></li>
+                    <li><a href="./q_research.html">Quality Services</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="./sustainability.html">Sustainability</a>
+                <ul class="m_sub">
+                    <li><a href="#">ESG 경영</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="./careers.html">Careers</a>
+                <ul class="m_sub">
+                    <li><a href="#">인재상</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="./newsroom.html">Newsroom</a>
+                <ul class="m_sub">
+                    <li><a href="#">뉴스룸</a></li>
+                </ul>
+            </li>
+        </ul>
+    `;
+
+    const dim = document.createElement("div");
+    dim.className = "mobile_dim";
+
+    document.body.appendChild(dim);
+    document.body.appendChild(mobileMenu);
+
+    const closeBtn = mobileMenu.querySelector(".mobile_menu_close");
+
+    mobileBtn.addEventListener("click", function(){
+        mobileMenu.classList.add("on");
+        dim.classList.add("on");
+    });
+
+    closeBtn.addEventListener("click", function(){
+        mobileMenu.classList.remove("on");
+        dim.classList.remove("on");
+    });
+
+    dim.addEventListener("click", function(){
+        mobileMenu.classList.remove("on");
+        dim.classList.remove("on");
+    });
+
+    const menuLinks = mobileMenu.querySelectorAll(".m_menu > li > a");
+
+    menuLinks.forEach(function(link){
+        link.addEventListener("click", function(e){
+            const sub = this.nextElementSibling;
+
+            if(sub && sub.classList.contains("m_sub")){
+                e.preventDefault();
+
+                document.querySelectorAll(".mobile_menu .m_sub").forEach(function(item){
+                    if(item !== sub) item.style.display = "none";
+                });
+
+                sub.style.display = sub.style.display === "block" ? "none" : "block";
+            }
+        });
+    });
+
+});

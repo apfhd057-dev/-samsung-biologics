@@ -1651,6 +1651,12 @@
         font-size:32px;
         margin-bottom:45px;
     }
+    #performance .performance_inner > h3.act{
+        text-align: left;
+    }
+    #performance .performance_inner > h5.act{
+        text-align: left;
+    }
 
     #performance .performance_box{
         border-radius:28px;
@@ -1711,11 +1717,13 @@
 
     /* ARCHIVE */
     #archive{
-        padding:90px 0;
-    }
+    padding:90px 0;
+}
 
     #archive .archive_inner{
-        margin-bottom:40px;
+        width:90%;
+        margin:0 auto 40px;
+        text-align:left;
     }
 
     #archive .archive_inner h3{
@@ -1723,23 +1731,35 @@
     }
 
     #archive .archive_slider{
-        width:86vw;
-        margin:0 auto;
+        width:100%;
+        overflow-x:auto;
+        overflow-y:hidden;
+        margin:0;
+        padding-left:5%;
+        padding-bottom:30px;
+        box-sizing:border-box;
+        transform:none !important;
+        opacity:1 !important;
+        scrollbar-width:auto;
     }
 
     #archive .box{
-        gap:0;
+        display:flex;
+        width:max-content;
+        gap:24px;
+        transform:none !important;
     }
 
     #archive .box div{
-        flex:0 0 86vw;
+        flex:0 0 82vw;
         height:240px;
         opacity:1;
         transform:scale(1);
     }
 
     #archive .archive_prev,
-    #archive .archive_next{
+    #archive .archive_next,
+    #archive .archive_pagination{
         display:none;
     }
     /* NEWSROOM */
@@ -1841,4 +1861,71 @@
     #footer .footer_bottom{
         padding:32px 0;
     }
+}
+
+/* MOBILE MENU */
+.mobile_menu{
+    position:fixed;
+    top:0;
+    right:-100%;
+    width:80%;
+    max-width:420px;
+    height:100vh;
+    background:#fff;
+    z-index:9999;
+    padding:90px 30px 40px;
+    box-sizing:border-box;
+    transition:right .35s ease;
+    overflow-y:auto;
+}
+
+.mobile_menu.on{
+    right:0;
+}
+
+.mobile_menu_close{
+    position:absolute;
+    top:25px;
+    right:25px;
+    border:none;
+    background:none;
+    font-size:30px;
+    cursor:pointer;
+}
+
+.mobile_menu .m_menu > li{
+    border-bottom:1px solid #ddd;
+    padding:20px 0;
+}
+
+.mobile_menu .m_menu > li > a{
+    font-size:20px;
+    font-weight:700;
+    color:#111;
+}
+
+.mobile_menu .m_sub{
+    margin-top:15px;
+    display:none;
+}
+
+.mobile_menu .m_sub li{
+    margin:10px 0;
+}
+
+.mobile_menu .m_sub a{
+    font-size:15px;
+    color:#555;
+}
+
+.mobile_dim{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.45);
+    z-index:9998;
+    display:none;
+}
+
+.mobile_dim.on{
+    display:block;
 }
