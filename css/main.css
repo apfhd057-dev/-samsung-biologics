@@ -816,7 +816,7 @@
     transition: transform 0.7s ease;
 }
 
-#archive .box div {
+#archive .box > div {
     flex: 0 0 900px;
     height: 500px;
     border-radius: 0 20px 0 20px;
@@ -826,12 +826,12 @@
     transition: 0.7s ease;
 }
 
-#archive .box div.active {
+#archive .box > div.active {
     opacity: 1;
     transform: scale(1);
 }
 
-#archive .box div img {
+#archive .box > div img {
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -884,6 +884,94 @@
 #archive .archive_pagination span.active {
     background: #23398C;
     outline: 4px solid #dfe5f8;
+}
+#archive .box > div{
+    position:relative;
+}
+
+#archive .archive_overlay{
+    position:absolute;
+    inset:0;
+    padding:60px;
+    box-sizing:border-box;
+
+    display:flex;
+    flex-direction:column;
+    justify-content:flex-end;
+    align-items:flex-start;
+
+    background:
+        linear-gradient(
+            to top,
+            rgba(8,18,36,.9) 0%,
+            rgba(8,18,36,.65) 40%,
+            rgba(8,18,36,.18) 100%
+        );
+
+    color:#fff;
+    opacity:0;
+    transition:.45s ease;
+    z-index:5;
+}
+
+#archive .box > div:hover .archive_overlay{
+    opacity:1;
+}
+
+#archive .archive_overlay span{
+    display:inline-block;
+    padding:8px 14px;
+    margin-bottom:18px;
+    border-radius:50px;
+    font-size:13px;
+    font-weight:700;
+    letter-spacing:1.5px;
+    color:#62F4FF;
+
+    transform:translateY(25px);
+    transition:.45s ease;
+}
+
+#archive .archive_overlay h4{
+    width:80%;
+    max-width:680px;
+
+    font-size:30px;
+    line-height:1.35;
+    font-weight:800;
+    color:#fff;
+    margin-bottom:28px;
+
+    word-break:keep-all;
+
+    transform:translateY(25px);
+    transition:.45s ease .05s;
+}
+
+#archive .archive_overlay a{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    width:150px;
+    height:46px;
+    border:1px solid rgba(255,255,255,.6);
+    justify-content:center;
+    color:#fff;
+    font-size:15px;
+    font-weight:700;
+    transform:translateY(25px);
+    transition:.45s ease .1s;
+}
+
+#archive .archive_overlay a:hover{
+    background:#fff;
+    color:#23398C;
+}
+
+#archive .box > div:hover .archive_overlay span,
+#archive .box > div:hover .archive_overlay h4,
+#archive .box > div:hover .archive_overlay a{
+    transform:translateY(0);
 }
 
 #newsroom {
@@ -1116,7 +1204,6 @@
     background:none;
     width: 200px;
     height: 50px;
-    border-radius: 20px;
     background-color: #fff;
     color: #000;
     font-size: clamp(16px, 1.2vw, 20px);
@@ -1445,7 +1532,49 @@
         width:320px;
         height:210px;
     }
+    #esg .esg_title{
+    opacity:0;
+    transform:translateX(-120px);
+    transition:all 1s ease;
+}
 
+#esg .esg_title.act{
+    opacity:1;
+    transform:translateX(0);
+}
+
+#esg .esg_card{
+    opacity:0;
+    transition:all 1s ease;
+}
+
+#esg .esg_card:nth-child(1){
+    transform:translateX(120px);
+}
+
+#esg .esg_card:nth-child(2){
+    transform:translateX(-120px);
+}
+
+#esg .esg_card:nth-child(3){
+    transform:translateX(120px);
+}
+
+#esg .esg_card.act{
+    opacity:1;
+    transform:translateX(0);
+}
+#esg .esg_card:nth-of-type(1){
+    transform:translateX(120px);
+}
+
+#esg .esg_card:nth-of-type(2){
+    transform:translateX(-120px);
+}
+
+#esg .esg_card:nth-of-type(3){
+    transform:translateX(120px);
+}
     /* ARCHIVE */
     #archive{
         padding:140px 0;
@@ -1455,7 +1584,7 @@
         gap:40px;
     }
 
-    #archive .box div{
+    #archive .box > div{
         flex:0 0 70vw;
         height:420px;
     }
@@ -1750,7 +1879,7 @@
         transform:none !important;
     }
 
-    #archive .box div{
+    #archive .box > div{
         flex:0 0 82vw;
         height:240px;
         opacity:1;
@@ -1761,6 +1890,28 @@
     #archive .archive_next,
     #archive .archive_pagination{
         display:none;
+    }
+     #archive .archive_overlay{
+        opacity:1;
+    }
+
+    #archive .archive_overlay span{
+        font-size:11px;
+        padding:6px 10px;
+        margin-bottom:10px;
+    }
+
+    #archive .archive_overlay h4{
+        width:100%;
+        font-size:18px;
+        line-height:1.1;
+        margin-bottom:16px;
+    }
+
+    #archive .archive_overlay a{
+        width:110px;
+        height:36px;
+        font-size:13px;
     }
     /* NEWSROOM */
     #newsroom .newsroom_inner{
@@ -1929,3 +2080,4 @@
 .mobile_dim.on{
     display:block;
 }
+

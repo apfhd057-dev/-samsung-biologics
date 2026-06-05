@@ -48,6 +48,13 @@ window.addEventListener("load", function(){
             ".performance_box"
         ], 180);
 
+        sectionMotion("#esg", [
+            "#esg .esg_title",
+            "#esg .esg_card:nth-child(1)",
+            "#esg .esg_card:nth-child(2)",
+            "#esg .esg_card:nth-child(3)"
+        ], 220);
+
         sectionMotion("#archive", [
             ".archive_inner h5",
             ".archive_inner h3",

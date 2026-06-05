@@ -176,7 +176,7 @@ window.addEventListener("scroll", function() {
 
 /* ARCHIVE */
 const archiveBox = document.querySelector("#archive .box");
-let archiveItems = document.querySelectorAll("#archive .box div");
+let archiveItems = document.querySelectorAll("#archive .box > div");
 
 const archivePrev = document.querySelector(".archive_prev");
 const archiveNext = document.querySelector(".archive_next");
@@ -210,7 +210,7 @@ if(archiveBox && archivePrev && archiveNext && archivePagination && archiveItems
     archiveBox.appendChild(firstClone);
     archiveBox.insertBefore(lastClone, archiveItems[0]);
 
-    archiveItems = document.querySelectorAll("#archive .box div");
+    archiveItems = document.querySelectorAll("#archive .box > div");
 
     function archiveMove(transition = true) {
         archiveBox.style.transition = transition ? "transform 0.3s ease" : "none";
