@@ -41,19 +41,37 @@ const header = document.querySelector("#header");
 const logo = document.querySelector(".logo img");
 const searchicon = document.querySelector(".info_r img");
 
-if(header){
-    header.addEventListener("mouseenter", function(){
-        header.classList.add("on");
+function updateHeaderLogo(){
+    if(!header) return;
+
+    const isScrolled = window.scrollY > 80;
+    const isHover = header.classList.contains("hover");
+
+    if(isScrolled || isHover){
+        header.classList.add("scroll");
         if(logo) logo.src = "./images/Logo_B.svg";
         if(searchicon) searchicon.src = "./images/s_search_1.png";
+    }else{
+        header.classList.remove("scroll");
+        if(logo) logo.src = "./images/Logo_w.svg";
+        if(searchicon) searchicon.src = "./images/search.png";
+    }
+}
+
+if(header){
+    header.addEventListener("mouseenter", function(){
+        header.classList.add("hover");
+        updateHeaderLogo();
     });
 
     header.addEventListener("mouseleave", function(){
-        header.classList.remove("on");
-        if(logo) logo.src = "./images/Logo_w.svg";
-        if(searchicon) searchicon.src = "./images/search.png";
+        header.classList.remove("hover");
+        updateHeaderLogo();
     });
 }
+
+window.addEventListener("scroll", updateHeaderLogo);
+window.addEventListener("load", updateHeaderLogo);
 
 
 /* SERVICES */
@@ -61,7 +79,7 @@ const serviceData = [
     {
         title: "오가노이드 (Organoids)",
         desc: "환자 유래 오가노이드 (Patient-Derived Organoids) 기반의 약물 스크리닝<br>서비스로 신약 후보 물질의 효능을 평가합니다.",
-        img: "./images/Original_Loop_high_img.png",
+        img: "./images/img_overview_01.png",
         link: "./ourservices.html"
     },
     {
@@ -391,12 +409,12 @@ ScrollTrigger.matchMedia({
 
             gsap.set(esgImg, {
                 left: "50%",
-                top: "50%",
-                width: 900,
-                height: 900,
+                top: "44.5%",
+                width: 760,
+                height: 760,
                 xPercent: -50,
                 yPercent: -50,
-                scale: 1.15
+                scale: 1.05
             });
 
             gsap.set(esgTitle, {
@@ -416,7 +434,7 @@ ScrollTrigger.matchMedia({
             const esgTl = gsap.timeline({
                 scrollTrigger: {
                     trigger: "#esg",
-                    start: "top top",
+                    start: "top 110px",
                     end: "+=3200",
                     pin: true,
                     scrub: 1,
@@ -433,9 +451,9 @@ ScrollTrigger.matchMedia({
             // 지구본 왼쪽 이동
             .to(esgImg, {
                 left: "20%",
-                top: "67%",
-                width: 550,
-                height: 550,
+                top: "59%",
+                width: 500,
+                height: 500,
                 scale: 1,
                 duration: 0.8,
                 ease: "power2.inOut"
@@ -587,4 +605,14 @@ window.addEventListener("load", function(){
         });
     });
 
+});
+
+window.addEventListener("scroll", function(){
+    const header = document.querySelector("#header");
+
+    if(window.scrollY > 80){
+        header.classList.add("scroll");
+    }else{
+        header.classList.remove("scroll");
+    }
 });
