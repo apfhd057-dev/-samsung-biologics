@@ -615,8 +615,8 @@
     position: absolute;
     left: 50%;
     top: 45%;
-    width: 900px;
-    height: 900px;
+    width: 800px;
+    height: 800px;
     transform: translate(-50%, -50%) scale(1.15);
     transition: 1s ease;
     z-index: 2;
@@ -1138,25 +1138,57 @@
 #notice .notice_l > .noticel_txt > p , #notice .notice_r > .noticer_txt > p{
     font-size: clamp(14px, 1vw, 18px);
 }
-#notice .noticel_img1{
+#notice .noticel_img1,
+#notice .noticel_img2{
+    position: relative;
     width: 105px;
     height: 105px;
-    background: url(../images/text_deco.png) no-repeat;
-    background-size: cover;
-
     display:flex;
     justify-content:center;
     align-items:center;
 }
-#notice .noticel_img2{
-    width: 105px;
-    height: 105px;
-    background: url(../images/text_deco1.png) no-repeat;
-    background-size: cover;
+#notice .noticel_img1::before{
+    content: "";
+    position: absolute;
+    inset: 0;
 
-    display:flex;
-    justify-content:center;
-    align-items:center;
+    background: url("../images/text_deco.png") no-repeat center;
+    background-size: contain;
+
+    animation: noticeRotate 10s linear infinite;
+}
+#notice .noticel_img2::before{
+    content: "";
+    position: absolute;
+    inset: 0;
+
+    background: url("../images/text_deco1.png") no-repeat center;
+    background-size: contain;
+
+    animation: noticeRotate 10s linear infinite;
+}
+/* 가운데 화살표는 고정 */
+#notice .noticel_img1 img,
+#notice .noticel_img2 img{
+    position: relative;
+    z-index: 2;
+
+    /* 원하는 화살표 크기 */
+    width: 40px;
+    height: auto;
+
+    animation: none;
+    transform: none;
+}
+
+@keyframes noticeRotate {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
 }
 #mcontact{
     width: 100%;
@@ -2081,3 +2113,40 @@
     display:block;
 }
 
+#header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width:100%;
+    height: 110px;
+    z-index: 9999;
+    transition: all .4s ease;
+    background: transparent;
+}
+
+#header.scroll{
+    background: rgba(255,255,255,.92);
+    backdrop-filter: blur(14px);
+    box-shadow: 0 8px 30px rgba(0,0,0,.08);
+}
+
+#header.scroll .menu a,
+#header.scroll .info_r a{
+    color:#333;
+}
+
+#header.scroll .mobile_btn{
+    color:#111;
+}
+
+#header.scroll,
+#header:hover{
+    background:#fff;
+}
+
+#header.scroll .menu a,
+#header:hover .menu a,
+#header.scroll .info_r a,
+#header:hover .info_r a{
+    color:#111;
+}
