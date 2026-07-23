@@ -255,7 +255,11 @@ if(archiveBox && archivePrev && archiveNext && archivePagination && archiveItems
         }
 
         const itemWidth = archiveItems[0].offsetWidth;
-        const currentGap = window.innerWidth <= 768 ? 0 : 100;
+        const archiveBoxStyle = window.getComputedStyle(archiveBox);
+        const measuredGap = parseFloat(
+            archiveBoxStyle.columnGap || archiveBoxStyle.gap || "0"
+        );
+        const currentGap = Number.isFinite(measuredGap) ? measuredGap : 0;
         const moveX = archiveIndex * (itemWidth + currentGap);
 
         if (window.innerWidth <= 768) {
@@ -299,6 +303,11 @@ if(archiveBox && archivePrev && archiveNext && archivePagination && archiveItems
     });
 
     function startAuto() {
+        clearInterval(archiveTimer);
+
+        /* 모바일은 가로 스크롤 방식이므로 자동 인덱스 증가를 막습니다. */
+        if (window.innerWidth <= 768) return;
+
         archiveTimer = setInterval(nextSlide, 3000);
     }
 
@@ -306,6 +315,69 @@ if(archiveBox && archivePrev && archiveNext && archivePagination && archiveItems
         clearInterval(archiveTimer);
         startAuto();
     }
+
+    function revealArchive() {
+        const archiveSection = document.querySelector("#archive");
+        const archiveInner = document.querySelector("#archive .archive_inner");
+        const archiveSlider = document.querySelector("#archive .archive_slider");
+        const archiveHeadingSmall = document.querySelector("#archive .archive_inner h5");
+        const archiveHeading = document.querySelector("#archive .archive_inner h3");
+
+        archiveInner?.classList.add("show");
+        archiveSlider?.classList.add("act", "show", "archive-ready");
+        archiveHeadingSmall?.classList.add("act");
+        archiveHeading?.classList.add("act");
+        archivePagination.classList.add("act", "archive-ready");
+
+        requestAnimationFrame(function () {
+            archiveMove(false);
+        });
+
+        return archiveSection;
+    }
+
+    const archiveSection = document.querySelector("#archive");
+
+    if ("IntersectionObserver" in window && archiveSection) {
+        const archiveObserver = new IntersectionObserver(function (entries, observer) {
+            entries.forEach(function (entry) {
+                if (!entry.isIntersecting) return;
+                revealArchive();
+                observer.disconnect();
+            });
+        }, {
+            threshold: 0.08,
+            rootMargin: "0px 0px -6% 0px"
+        });
+
+        archiveObserver.observe(archiveSection);
+    } else {
+        revealArchive();
+    }
+
+    let archiveResizeFrame = 0;
+
+    function refreshArchiveLayout() {
+        cancelAnimationFrame(archiveResizeFrame);
+
+        archiveResizeFrame = requestAnimationFrame(function () {
+            /* 모바일에서 오래 머물러도 인덱스가 범위를 벗어나지 않게 */
+            archiveIndex = Math.min(
+                Math.max(archiveIndex, 1),
+                archiveItems.length - 2
+            );
+
+            archiveMove(false);
+            restartAuto();
+        });
+    }
+
+    window.addEventListener("load", function () {
+        revealArchive();
+        refreshArchiveLayout();
+    });
+
+    window.addEventListener("resize", refreshArchiveLayout);
 
     archiveMove(false);
     startAuto();

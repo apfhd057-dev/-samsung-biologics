@@ -734,6 +734,16 @@
         word-break:keep-all;
         margin-bottom:50px;
     }
+    #section4 .m3_box div h5{
+        font-size:24px;
+        line-height:1.7;
+        word-break:keep-all;
+    }
+    #section4 .m3_box div p{
+        font-size:13px;
+        line-height:1.7;
+        word-break:keep-all;
+    }
 
     #section3 .s1img,
     #section6 .s1img{
