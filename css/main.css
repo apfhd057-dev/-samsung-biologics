@@ -688,7 +688,12 @@
     font-weight: 900;
     color: #fff;
     margin-bottom: 20px;
+    cursor: pointer;
 }
+#esg .esg_txt h4:hover{
+    color: #62F4FF;
+}
+
 
 #esg .esg_txt p{
     font-size: clamp(14px, 1vw, 18px);
@@ -1047,6 +1052,9 @@
     overflow: hidden;
     text-overflow: ellipsis;
     text-align: center;
+}
+.news_item a:hover p {
+    color: #222edd;
 }
 
 #newsroom .news_item img {
