@@ -1,891 +1,1242 @@
-#wrap{
+/* =========================================================
+   MANUFACTURING SERVICES
+   삼성바이오 서브페이지 공통 반응형 기준 적용
+========================================================= */
+
+:root {
+    --page-max: 1600px;
+    --page-gutter: clamp(24px, 5vw, 80px);
+    --brand: #23398c;
+    --text: #111;
+    --muted: #525252;
+    --line: #d9d9d9;
+    --soft: #f2f3fb;
+    --soft-bg: #f7f7f7;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html,
+body {
     width: 100%;
+    overflow-x: hidden;
 }
-#header{
-    position: relative;
-    width:100%;
-    border-bottom: 1px solid #D9D9D9;
+
+body {
+    color: var(--text);
 }
-#header.act{
-    /* 헤드인일때와 아웃일때 애니메이션 설정 위해 추가 스타일선언 */
-    width:100%;
-    height: 110px;
-    background-color: #fff;
-}
-#header:hover{
-    background-color: #fff;
-}
-#header:hover .menu a{
-    color:#333;
-}
-#header:hover .info_r a{
-    color:#333;
-}
-#header .header_inner{
-    margin: 0 auto;
-    width: 100%;
-    max-width: 1600px;
-    height: 110px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-#header .logo{
-    width: 125px;
+
+img {
+    display: block;
+    max-width: 100%;
     height: auto;
 }
-#nav{
-    width: 870px;
+
+button,
+a {
+    -webkit-tap-highlight-color: transparent;
+}
+
+button {
+    font: inherit;
+    cursor: pointer;
+}
+
+#wrap,
+#contents,
+#footer {
+    width: 100%;
+    min-width: 0;
+}
+
+#header .header_inner,
+#section1,
+#section2,
+#section3 .s1txt_l,
+#section4,
+#section5,
+#section6 .s2txt_l,
+#section7,
+#footer .footer_nav,
+#footer .footer_bottom {
+    width: min(calc(100% - (var(--page-gutter) * 2)), var(--page-max));
+    margin-inline: auto;
+}
+
+.s1txt_l,
+.s2txt_l,
+.s1img,
+.c_group,
+.circle1,
+.m3_box,
+.m3_box1,
+.m3_box2,
+.s5_wrap,
+.s5_boxes,
+.s5_box,
+.s7_boxes,
+.s7_box,
+.footer_nav,
+.footer_l,
+.footer_r {
+    min-width: 0;
+}
+
+/* =========================================================
+   HEADER
+   s_research / d_research와 동일
+========================================================= */
+
+#header {
+    position: relative;
+    z-index: 100;
+    width: 100%;
+    border-bottom: 1px solid var(--line);
+    background: #fff;
+}
+
+#header.act {
+    height: 110px;
+    background: #fff;
+}
+
+#header .header_inner {
     height: 110px;
     display: flex;
     align-items: center;
-    /* 서브메뉴로 이동시 사라지지않게 하기위해 블록설정 */
-   }
-#nav .menu{
+    justify-content: space-between;
+    gap: clamp(24px, 3vw, 60px);
+}
+
+#header .logo {
+    flex: 0 0 125px;
+    width: 125px;
+}
+
+#header .logo img {
+    width: 100%;
+}
+
+#nav {
+    flex: 1 1 auto;
+    min-width: 0;
+    height: 110px;
     display: flex;
-    gap: 100px;
-    
+    align-items: center;
+    justify-content: center;
 }
-#nav .menu a{
-    font-size: 18px;
-    color: #111;
-    font-weight: 600;
+
+#nav .menu {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(30px, 4.2vw, 100px);
 }
+
 #nav .menu > li {
     position: relative;
 }
-#nav .menu > li >a:hover{
+
+#nav .menu > li > a {
+    display: block;
+    color: var(--text);
+    font-size: clamp(14px, 1vw, 18px);
+    font-weight: 600;
+    white-space: nowrap;
+    transition: color 0.25s ease;
+}
+
+#nav .menu > li > a:hover,
+#nav .menu > li > a:focus-visible {
     color: #777;
 }
-#nav .sub{
+
+#nav .sub {
     position: absolute;
-    top: 300%;
+    top: calc(100% + 36px);
     left: 50%;
-    transform: translateX(-50%);
-    min-width: 160px;
-    padding-top: 20px;
-    text-align: center;
     z-index: 200;
+    min-width: 180px;
+    padding-top: 18px;
+    text-align: center;
+    transform: translateX(-50%);
 }
-#nav .sub li{
-    padding: 20px 0;
+
+#nav .sub li {
+    padding: 12px 0;
 }
-#nav .sub li a{
+
+#nav .sub a {
     display: block;
-    font-size: clamp(14px, 1vw, 18px);
-    color:#333;
+    color: #333;
+    font-size: clamp(14px, 1vw, 17px);
     font-weight: 400;
+    letter-spacing: -0.04em;
     white-space: nowrap;
-    letter-spacing: -1px; 
+    transition: color 0.25s ease;
 }
-#nav .sub li a:hover{
+
+#nav .sub a:hover,
+#nav .sub a:focus-visible {
     color: #222edd;
 }
-#header .submn_area{
+
+#header .submn_area {
     position: absolute;
     top: 100%;
     left: 0;
     z-index: 100;
     width: 100%;
-    height: auto;
-    background: #fff;
-    overflow: hidden;
-    border-top:1px solid #ccc;
+    min-height: 0;
     padding: 50px;
+    overflow: hidden;
+    border-top: 1px solid #ccc;
+    background: #fff;
 }
-#info{
-    transform:translateY(-10px);
+
+#info {
+    flex: 0 0 auto;
 }
-#info .info_r{
+
+#info .info_r {
     display: flex;
+    align-items: center;
     gap: 20px;
 }
-#info .info_r a{
+
+#info .info_r a {
+    color: var(--text);
     font-size: 16px;
-    color: #111;
-    font-weight: 200;
+    font-weight: 300;
+    white-space: nowrap;
 }
-#header .mobile_btn{
+
+#info .info_r img {
+    width: 20px;
+}
+
+#header .mobile_btn {
     display: none;
+    flex: 0 0 auto;
+    padding: 8px;
+    border: 0;
+    background: transparent;
+    color: var(--text);
+    font-size: 30px;
 }
 
+/* =========================================================
+   COMMON TYPOGRAPHY
+   앞선 서브페이지와 동일한 크기
+========================================================= */
 
-/* 콘텐츠영역 */
-#contents{
-    width: 100%;
+.s1txt_l h4,
+.s2txt_l h5 {
+    margin-bottom: 28px;
+    color: var(--brand);
+    font-size: clamp(17px, 1.5vw, 24px);
+    font-weight: 700;
 }
-#section1{
-    margin: 0 auto;
-    width: 100%;
-    max-width: 1600px;
-    padding: 140px 0 200px;
-}
-#section1 .s1txt_l h4{
-    font-size: 24px;
-    color: #23398C;
-    margin-bottom: 40px;
 
+.s1txt_l h1,
+.s2txt_l h1 {
+    margin-bottom: 44px;
+    font-size: clamp(34px, 3.2vw, 48px);
+    line-height: 1.24;
+    letter-spacing: -0.045em;
+    word-break: keep-all;
 }
-#section1 .s1txt_l h1{
-    font-size: 48px;
-    margin-bottom: 60px;
-}
-#section1 .s1txt_l p{
-    line-height: 190%;
-    margin-bottom: 60px;
-}
-#section1 .s1img{
-    width: 100%;
-}
-#section1 .s1img img{
-    width: 100%; 
-}
-#section2{
-    margin: 0 auto;
-    width: 100%;
-    max-width: 1600px;
-}
-#section2 .s1txt_l h4{
-    font-size: 24px;
-    color: #23398C;
-    margin-bottom: 40px;
 
+.s1txt_l p,
+.s2txt_l p {
+    color: #333;
+    font-size: clamp(15px, 1.05vw, 18px);
+    line-height: 1.9;
+    word-break: keep-all;
 }
-#section2 .s1txt_l h1{
-    font-size: 48px;
-    margin-bottom: 60px;
-}
-#section2 .s1txt_l p{
-    line-height: 190%;
-    margin-bottom: 60px;
-}
-#section2 .s2txt_l h5{
-    font-size: 24px;
-    color: #23398C;
-    margin-bottom: 40px;
 
-}
-#section2 .s2txt_l h1{
-    font-size: 48px;
-    margin-bottom: 60px;
-}
-#section2 .s2txt_l p{
-    line-height: 190%;
-    margin-bottom: 60px;
-}
-#section2 button{
+#section2 button,
+#section6 button {
     width: 200px;
     height: 50px;
-    background-color: #000;
+    border: 1px solid #000;
+    background: #000;
     color: #fff;
-    font-size: 20px;
+    font-size: 18px;
+    transition:
+        background-color 0.25s ease,
+        color 0.25s ease;
+}
 
+#section2 button:hover,
+#section2 button:focus-visible,
+#section6 button:hover,
+#section6 button:focus-visible {
+    background: #fff;
+    color: #000;
 }
-#section3{
+
+/* =========================================================
+   SECTION 01
+========================================================= */
+
+#section1 {
+    padding-block: clamp(100px, 9vw, 140px) clamp(120px, 12vw, 200px);
+}
+
+#section1 .s1txt_l p {
+    margin-bottom: 52px;
+}
+
+#section1 .s1img {
     width: 100%;
-    padding: 200px 0;
+    overflow: hidden;
+    border-radius: 20px;
 }
-#section3 .s1txt_l{
-    margin: 0 auto;
+
+#section1 .s1img img {
     width: 100%;
-    max-width: 1600px;
-    
+    max-height: 720px;
+    object-fit: cover;
 }
-#section3 .s1txt_l h4{
-    font-size: 24px;
-    color: #23398C;
-    margin-bottom: 40px;
+
+/* =========================================================
+   SECTION 02
+========================================================= */
+
+#section2 {
+    padding-bottom: clamp(120px, 12vw, 200px);
 }
-#section3 .s1txt_l h1{
-    font-size: 48px;
-    margin-bottom: 60px;
+
+#section2 .s1txt_l p {
+    margin-bottom: clamp(70px, 8vw, 120px);
 }
-#section3 .s1txt_l p{
-    line-height: 190%;
-    margin-bottom: 140px;
+
+#section2 .s2txt_l p {
+    margin-bottom: 46px;
 }
-#section3 .s1img{
+
+/* =========================================================
+   SECTION 03 / SECTION 06
+   원형 단계 공통
+========================================================= */
+
+#section3,
+#section6 {
     width: 100%;
-    background-color: #F7F7F7;
 }
-#section3 .c_group{
-    margin: 0 auto;
-    width: 1600px;
-    height: 600px;
-    display: flex;
-    justify-content: space-evenly;
+
+#section3 {
+    padding-block: clamp(110px, 10vw, 180px);
+}
+
+#section6 {
+    padding-bottom: clamp(120px, 12vw, 200px);
+}
+
+#section3 .s1txt_l p,
+#section6 .s2txt_l p {
+    margin-bottom: clamp(60px, 8vw, 120px);
+}
+
+#section3 .s1img,
+#section6 .s1img {
+    width: 100%;
+    background: var(--soft-bg);
+}
+
+#section3 .c_group,
+#section6 .c_group {
+    width: min(calc(100% - (var(--page-gutter) * 2)), var(--page-max));
+    min-height: 540px;
+    margin-inline: auto;
+    padding-block: 70px;
+    display: grid;
+    grid-template-columns:
+        minmax(0, 1fr) minmax(34px, 0.12fr)
+        minmax(0, 1fr) minmax(34px, 0.12fr)
+        minmax(0, 1fr) minmax(34px, 0.12fr)
+        minmax(0, 1fr) minmax(34px, 0.12fr)
+        minmax(0, 1fr) minmax(34px, 0.12fr)
+        minmax(0, 1fr);
     align-items: center;
+    gap: clamp(12px, 1.2vw, 22px);
 }
-#section3 .circle1{
+
+#section3 .circle1,
+#section6 .circle1 {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
-}
-#section3 .circle{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 210px;
-    height: 210px;
-    background-color: #fff;
-    border: 1px solid #ccc;
-    border-radius: 50%;
-    margin-bottom: 70px;
-}
-#section3 .circle1 span{
-    margin-bottom: 30px;
-}
-#section3 .circle1 p{
     text-align: center;
 }
-#section4{
-    margin: 0 auto;
-    width: 1600px;
+
+#section3 .circle1 > span {
+    margin-bottom: 22px;
+    color: var(--brand);
+    font-weight: 700;
 }
-#section4 .s1txt_l h4{
-    font-size: 24px;
-    color: #23398C;
-    margin-bottom: 40px;
+
+#section3 .circle,
+#section6 .circle {
+    width: clamp(118px, 11vw, 190px);
+    aspect-ratio: 1;
+    margin-bottom: 30px;
+    display: grid;
+    place-items: center;
+    border: 1px solid #ccc;
+    border-radius: 50%;
+    background: #fff;
 }
-#section4 .s1txt_l h1{
-    font-size: 48px;
-    margin-bottom: 60px;
+
+#section3 .circle img,
+#section6 .circle img {
+    width: 58%;
+    max-height: 58%;
+    object-fit: contain;
 }
-#section4 .s1txt_l p{
-    line-height: 190%;
-    margin-bottom: 140px;
+
+#section3 .circle1 p,
+#section6 .circle1 p {
+    color: #222;
+    font-size: clamp(13px, 0.95vw, 16px);
+    font-weight: 600;
+    line-height: 1.5;
+    word-break: keep-all;
 }
-#section4 .m3_box{
-    display: flex;
-    justify-content: space-between;
+
+#section3 .step_arrow,
+#section6 .step_arrow {
+    display: grid;
+    place-items: center;
 }
-#section4 .m3_box div{
-    width: 740px;
-    height: 470px;
-    background-color: antiquewhite;
-    border-radius: 20px;
+
+#section3 .step_arrow img,
+#section6 .step_arrow img {
+    width: min(100%, 42px);
+}
+
+/* =========================================================
+   SECTION 04
+========================================================= */
+
+#section4 {
+    padding-block: clamp(110px, 10vw, 180px);
+}
+
+#section4 .s1txt_l p {
+    margin-bottom: clamp(60px, 8vw, 120px);
+}
+
+#section4 .m3_box {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: clamp(24px, 3vw, 40px);
+}
+
+#section4 .m3_box > div {
+    min-height: 470px;
+    padding: clamp(38px, 4.5vw, 70px);
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    padding: 70px;
-    box-sizing: border-box;
-}
-#section4 .m3_box div h5{
-    font-size: 32px;
-    margin-bottom: 30px;
-    color: #fff;
-}
-#section4 .m3_box div p{
-    color: #fff;
-}
-#section4 .m3_box1{
-    background: url(../images/m_section4_img1.png) no-repeat;
-    background-size: cover;
-}
-#section4 .m3_box2{
-    background: url(../images/m_section4_img2.png) no-repeat;
-    background-size: cover;
-}
-#section5{
-    margin: 0 auto;
-    width: 100%;
-    max-width: 1600px;
-    padding: 200px 0;
-}
-#section5 .s1txt_l h1{
-    margin-bottom: 40px;
-}
-#section5 .s5_wrap{
-    overflow-x:auto !important;
-    overflow-y:hidden;
-    cursor:grab;
-    scrollbar-width:none;
-    user-select:none;
-}
-#section5 .s5_wrap::-webkit-scrollbar{
-    display:none;
-}
-
-#section5 .s5_wrap.dragging{
-    cursor:grabbing;
-}
-
-#section5 .s5_boxes{
-    display:flex !important;
-    flex-wrap:nowrap !important;
-    flex-direction:row !important;
-    justify-content:flex-start !important;
-    align-items:center;
-    gap:35px;
-    width:max-content;
-}
-
-#section5 .s5_box,
-#section5 .s5_boxes div{
-    width:510px !important;
-    height:470px !important;
-    flex:0 0 510px !important;
-    border-radius:20px;
-    overflow:hidden;
-}
-#section5 .s5_boxes img{
-    width:100%;
-    height:100%;
-    object-fit:cover;
-    display:block;
-    pointer-events:none;
-    -webkit-user-drag:none;
-}
-#section5 .s5_progress{
-    width:100%;
-    height:2px;
-    background:#ccc;
-    margin-top:50px;
-    position:relative;
-}
-
-#section5 .s5_progress_bar{
-    height:4px;
-    background:#23398C;
-    position:absolute;
-    left:0;
-    top:-1px;
-}
-#section6{
-    margin: 0 auto;
-    width: 1600px;
-}
-#section6 .s2txt_l h5{
-    font-size: 24px;
-    color: #23398C;
-    margin-bottom: 40px;
-
-}
-#section6 .s2txt_l h1{
-    font-size: 48px;
-    margin-bottom: 60px;
-}
-#section6 .s2txt_l p{
-    line-height: 190%;
-    margin-bottom: 60px;
-}
-#section6 button{
-    width: 200px;
-    height: 50px;
-    background-color: #000;
-    color: #fff;
-    font-size: 20px;
-
-}
-#section6 .s1img{
-    width: 100%;
-}
-#section6 .c_group{
-    margin: 0 auto;
-    width: 1600px;
-    height: 600px;
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-}
-#section6 .circle1{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-#section6 .circle{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 210px;
-    height: 210px;
-    background-color: #fff;
-    border: 1px solid #ccc;
-    border-radius: 50%;
-    margin-bottom: 70px;
-}
-#section6 .circle1 span{
-    margin-bottom: 30px;
-}
-#section6 .circle1 p{
-    text-align: center;
-}
-#section7{
-    margin: 0 auto;
-    padding-bottom: 200px;
-    width: 1600px;
-}
-#section7 .s1txt_l h1{
-    font-size: 48px;
-    margin-bottom: 60px;
-}
-#section7 .s1txt_l p{
-    line-height: 190%;
-    margin-bottom: 70px;
-}
-#section7 .s7_boxes{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-#section7 .s7_boxes div{
-    width: 510px;
-    height: 230px;
-    background-color: #F2F3FB;
+    overflow: hidden;
     border-radius: 20px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#section4 .m3_box1 {
+    background-image:
+        linear-gradient(to top, rgba(0, 0, 0, 0.68), rgba(0, 0, 0, 0.05) 65%),
+        url(../images/m_section4_img1.png);
+}
+
+#section4 .m3_box2 {
+    background-image:
+        linear-gradient(to top, rgba(0, 0, 0, 0.68), rgba(0, 0, 0, 0.05) 65%),
+        url(../images/m_section4_img2.png);
+}
+
+#section4 .m3_box h5 {
+    margin-bottom: 22px;
+    color: #fff;
+    font-size: clamp(24px, 2.1vw, 32px);
+    line-height: 1.3;
+}
+
+#section4 .m3_box p {
+    color: #fff;
+    font-size: clamp(15px, 1.05vw, 18px);
+    line-height: 1.8;
+    word-break: keep-all;
+}
+
+/* =========================================================
+   SECTION 05 — 생산시설 가로 드래그
+========================================================= */
+
+#section5 {
+    padding-block: clamp(110px, 10vw, 180px);
+}
+
+#section5 .s1txt_l h1 {
+    margin-bottom: 44px;
+}
+
+#section5 .s5_wrap {
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    cursor: grab;
+    scrollbar-width: none;
+    user-select: none;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x proximity;
+}
+
+#section5 .s5_wrap::-webkit-scrollbar {
+    display: none;
+}
+
+#section5 .s5_wrap.dragging {
+    cursor: grabbing;
+}
+
+#section5 .s5_boxes {
+    width: max-content;
+    display: flex;
+    align-items: center;
+    gap: clamp(20px, 2.2vw, 35px);
+}
+
+#section5 .s5_box {
+    width: clamp(300px, 32vw, 510px);
+    aspect-ratio: 51 / 47;
+    flex: 0 0 clamp(300px, 32vw, 510px);
+    overflow: hidden;
+    border-radius: 20px;
+    scroll-snap-align: start;
+}
+
+#section5 .s5_box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    pointer-events: none;
+    -webkit-user-drag: none;
+}
+
+#section5 .s5_progress {
+    position: relative;
+    width: 100%;
+    height: 2px;
+    margin-top: 42px;
+    background: #ccc;
+}
+
+#section5 .s5_progress_bar {
+    position: absolute;
+    left: 0;
+    top: -1px;
+    height: 4px;
+    background: var(--brand);
+}
+
+/* =========================================================
+   SECTION 07
+========================================================= */
+
+#section7 {
+    padding-bottom: clamp(120px, 12vw, 200px);
+}
+
+#section7 .s1txt_l p {
+    margin-bottom: clamp(54px, 7vw, 80px);
+}
+
+#section7 .s7_boxes {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: clamp(22px, 2.5vw, 40px);
+}
+
+#section7 .s7_box {
+    min-height: 230px;
+    padding: 38px 26px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
-}
-#section7 .s7_boxes h5{
-    font-size: 20px;
-    font-weight: 700;
-    margin-bottom: 20px;
-}
-#section7 .s7_boxes p{
-    font-size: 18px;
+    justify-content: center;
+    border-radius: 20px;
+    background: var(--soft);
     text-align: center;
 }
 
-/* 푸터 */
+#section7 .s7_box h5 {
+    margin-bottom: 20px;
+    font-size: clamp(20px, 1.6vw, 24px);
+    font-weight: 700;
+    line-height: 1.35;
+}
 
-#footer .footer_top{
+#section7 .s7_box p {
+    color: #333;
+    font-size: clamp(15px, 1.05vw, 18px);
+    line-height: 1.75;
+    word-break: keep-all;
+}
+
+/* =========================================================
+   FOOTER
+   앞선 페이지와 동일
+========================================================= */
+
+#footer .footer_top {
     width: 100%;
     border-top: 1px solid #ccc;
     border-bottom: 1px solid #ccc;
 }
-#footer .footer_nav{
-    margin: 0 auto;
-    padding:40px 0;
-    width: 100%;
-    max-width: 1600px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-#footer .footer_l{
-    display: flex;
-    
-}
-#footer .footer_l li::after{
-    content: "|";
-    width:1px;
-    height:20px;
-    padding: 0 20px;
 
+#footer .footer_nav {
+    padding-block: 36px;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: start;
+    gap: 28px;
 }
-#footer .footer_l li:last-child::after{
-    content: "";
-}
-#footer .footer_r{
+
+#footer .footer_l {
     display: flex;
-    gap: 20px;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px 0;
 }
-#footer .footer_r li img{
+
+#footer .footer_l li {
+    display: inline-flex;
+    align-items: center;
+    font-size: 14px;
+    line-height: 1.5;
+    white-space: nowrap;
+}
+
+#footer .footer_l li::after {
+    content: "|";
+    padding-inline: 16px;
+    color: #aaa;
+}
+
+#footer .footer_l li:last-child::after {
+    content: "";
+    padding: 0;
+}
+
+#footer .footer_r {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+
+#footer .footer_r img {
     width: 24px;
     height: 24px;
+    object-fit: contain;
 }
-#footer .footer_bottom{
-    margin: 0 auto;
-    padding: 40px 0;
-    width: 100%;
-    max-width: 1600px;
+
+#footer .footer_bottom {
+    padding-block: 36px;
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-between;
+    gap: 32px;
 }
-#footer .footer_bottom_icon{
+
+#footer address {
+    font-style: normal;
+    line-height: 1.7;
+}
+
+#footer .footer_bottom_icon {
     display: flex;
+    align-items: center;
+    flex-wrap: wrap;
     gap: 16px;
 }
-.footer_bottom_icon li:nth-child(1) img{
-    width:58px;
-    height:22px;
+
+#footer .footer_bottom_icon li:nth-child(1) img {
+    width: 58px;
 }
 
-.footer_bottom_icon li:nth-child(2) img{
-    width:36px;
-    height:36px;
+#footer .footer_bottom_icon li:nth-child(2) img {
+    width: 36px;
 }
 
-.footer_bottom_icon li:nth-child(3) img{
-    width:48px;
-    height: 36px;
+#footer .footer_bottom_icon li:nth-child(3) img {
+    width: 48px;
 }
 
-/* 스크롤 */
-.motion{
-    opacity:0;
-    transform:translateY(120px) scale(0.96);
-    filter:blur(6px);
+/* =========================================================
+   MOTION
+========================================================= */
+
+.motion {
+    opacity: 0;
+    filter: blur(6px);
+    transform: translateY(80px) scale(0.98);
 }
 
-.motion.show{
-    opacity:1;
-    transform:translateY(0) scale(1);
-    filter:blur(0);
+.motion.show {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateY(0) scale(1);
     transition:
-        opacity 1s ease,
-        transform 1s ease,
-        filter 1s ease;
+        opacity 0.9s ease,
+        transform 0.9s ease,
+        filter 0.9s ease;
 }
 
-/* =========================
-   Manufacturing Responsive
-========================= */
+/* =========================================================
+   MOBILE MENU
+   sub.js 클래스 유지
+========================================================= */
 
-#header .mobile_btn{
-    display:none;
+.mobile_menu {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    z-index: 9999;
+    width: min(84%, 420px);
+    height: 100dvh;
+    padding: 90px 30px 40px;
+    overflow-y: auto;
+    background: #fff;
+    transition: right 0.35s ease;
 }
 
-@media screen and (max-width:1600px){
-    #header .header_inner,
-    #section1,
-    #section2,
-    #section4,
-    #section5,
-    #section6,
-    #section7,
-    #footer .footer_nav,
-    #footer .footer_bottom{
-        width:90%;
-        max-width:1600px;
-        margin-left:auto;
-        margin-right:auto;
-    }
-
-    #section3 .s1txt_l,
-    #section6 .s2txt_l,
-    #section3 .c_group,
-    #section6 .c_group{
-        width:90%;
-        max-width:1600px;
-    }
+.mobile_menu.on {
+    right: 0;
 }
 
-@media screen and (max-width:1200px){
+.mobile_menu_close {
+    position: absolute;
+    top: 25px;
+    right: 25px;
+    border: 0;
+    background: transparent;
+    font-size: 30px;
+}
+
+.mobile_menu .m_menu > li {
+    padding: 20px 0;
+    border-bottom: 1px solid #ddd;
+}
+
+.mobile_menu .m_menu > li > a {
+    color: #111;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.mobile_menu .m_sub {
+    display: none;
+    margin-top: 15px;
+}
+
+.mobile_menu .m_sub li {
+    margin: 10px 0;
+}
+
+.mobile_menu .m_sub a {
+    color: #555;
+    font-size: 15px;
+}
+
+.mobile_dim {
+    position: fixed;
+    inset: 0;
+    z-index: 9998;
+    display: none;
+    background: rgba(0, 0, 0, 0.45);
+}
+
+.mobile_dim.on {
+    display: block;
+}
+
+/* =========================================================
+   TABLET — 1280px
+========================================================= */
+
+@media (max-width: 1280px) {
     #nav,
-    #info{
-        display:none;
+    #info {
+        display: none;
     }
 
-    #header .mobile_btn{
-        display:block;
-        border:none;
-        background:none;
-        color:#111;
-        font-size:34px;
-        cursor:pointer;
+    #header .header_inner {
+        height: 92px;
     }
 
-    #section1,
-    #section2,
-    #section3,
-    #section4,
-    #section5,
-    #section6,
-    #section7{
-        width:90%;
-        max-width:none;
-        margin:0 auto;
+    #header .mobile_btn {
+        display: block;
     }
 
-    #section1{
-        padding:100px 0 140px;
-    }
-
-    #section3,
-    #section5{
-        padding:140px 0;
-    }
-
-    #section3 .s1txt_l,
-    #section6 .s2txt_l{
-        width:100%;
-    }
-
-    #section3 .s1img,
-    #section6 .s1img{
-        width:100vw;
-        margin-left:calc(50% - 50vw);
-        background:#f7f7f7;
+    #header .submn_area {
+        display: none;
     }
 
     #section3 .c_group,
-    #section6 .c_group{
-        width:90%;
-        height:auto;
-        padding:70px 0;
-        flex-wrap:wrap;
-        gap:40px 30px;
+    #section6 .c_group {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 28px;
+        min-height: auto;
     }
 
-    #section3 .c_group > div:nth-child(even),
-    #section6 .c_group > div:nth-child(even){
-        display:none;
-    }
-
-    #section3 .circle1,
-    #section6 .circle1{
-        width:calc(33.333% - 30px);
+    #section3 .step_arrow,
+    #section6 .step_arrow {
+        display: none;
     }
 
     #section3 .circle,
-    #section6 .circle{
-        width:160px;
-        height:160px;
-        margin-bottom:30px;
+    #section6 .circle {
+        width: min(18vw, 180px);
     }
 
-    #section4 .m3_box{
-        flex-direction:column;
-        gap:30px;
+    #section4 .m3_box > div {
+        min-height: 420px;
     }
 
-    #section4 .m3_box div{
-        width:100%;
-        height:auto;
-        min-height:420px;
+    #section7 .s7_boxes {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
-    #section5 .s5_box,
-    #section5 .s5_boxes div{
-        width:420px !important;
-        height:390px !important;
-        flex:0 0 420px !important;
+    #section7 .s7_box:last-child {
+        grid-column: 1 / -1;
+        width: min(100%, 510px);
+        margin-inline: auto;
     }
 
-    #section7 .s7_boxes{
-        flex-wrap:wrap;
-        gap:30px;
-    }
-
-    #section7 .s7_boxes div{
-        width:calc(50% - 15px);
-        height:auto;
-        min-height:230px;
-    }
-
-    #footer .footer_nav,
-    #footer .footer_bottom{
-        width:90%;
-    }
-
-    #footer .footer_l{
-        flex-wrap:wrap;
-        gap:10px;
-    }
-
-    #footer .footer_l li::after{
-        display:none;
+    #footer .footer_bottom {
+        flex-direction: column;
+        align-items: flex-start;
     }
 }
 
-@media screen and (max-width:768px){
-    #header .header_inner{
-        width:90%;
-        height:80px;
+/* =========================================================
+   SMALL TABLET — 900px
+========================================================= */
+
+@media (max-width: 900px) {
+    #section3 .c_group,
+    #section6 .c_group {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        padding-block: 55px;
     }
 
-    #section1,
-    #section2,
-    #section3,
-    #section4,
-    #section5,
-    #section6,
-    #section7{
-        width:90%;
-        margin:0 auto;
+    #section3 .circle,
+    #section6 .circle {
+        width: 160px;
     }
 
-    #section1,
-    #section3,
-    #section5,
-    #section6,
-    #section7{
-        padding:80px 0;
+    #section4 .m3_box {
+        grid-template-columns: 1fr;
     }
 
-    #section1 .s1txt_l h1,
-    #section2 .s1txt_l h1,
-    #section2 .s2txt_l h1,
-    #section3 .s1txt_l h1,
-    #section4 .s1txt_l h1,
-    #section5 .s1txt_l h1,
-    #section6 .s2txt_l h1,
-    #section7 .s1txt_l h1{
-        font-size:clamp(30px, 7vw, 42px);
-        line-height:1.25;
-        margin-bottom:40px;
+    #section4 .m3_box > div {
+        min-height: 390px;
     }
 
-    #section1 .s1txt_l p,
-    #section2 .s1txt_l p,
-    #section2 .s2txt_l p,
+    #footer .footer_nav {
+        grid-template-columns: 1fr;
+    }
+
+    #footer .footer_r {
+        justify-self: start;
+    }
+}
+
+/* =========================================================
+   MOBILE — 768px
+========================================================= */
+
+@media (max-width: 768px) {
+    :root {
+        --page-gutter: 20px;
+    }
+
+    #header .header_inner {
+        height: 80px;
+    }
+
+    #header .logo {
+        flex-basis: 118px;
+        width: 118px;
+    }
+
+    .s1txt_l h4,
+    .s2txt_l h5 {
+        margin-bottom: 18px;
+        font-size: 16px;
+    }
+
+    .s1txt_l h1,
+    .s2txt_l h1 {
+        margin-bottom: 32px;
+        font-size: clamp(30px, 8vw, 40px);
+        line-height: 1.28;
+    }
+
+    .s1txt_l p,
+    .s2txt_l p {
+        font-size: 15px;
+        line-height: 1.75;
+    }
+
+    .s1txt_l p br,
+    .s2txt_l p br,
+    #section4 .m3_box p br,
+    #section7 .s7_box p br {
+        display: none;
+    }
+
+    #section1 {
+        padding-block: 76px 100px;
+    }
+
+    #section1 .s1txt_l p {
+        margin-bottom: 38px;
+    }
+
+    #section1 .s1img {
+        border-radius: 14px;
+    }
+
+    #section2 {
+        padding-bottom: 100px;
+    }
+
+    #section2 .s1txt_l p {
+        margin-bottom: 58px;
+    }
+
+    #section2 button,
+    #section6 button {
+        width: 160px;
+        height: 46px;
+        font-size: 15px;
+    }
+
+    #section3 {
+        padding-block: 90px;
+    }
+
+    #section6 {
+        padding-bottom: 100px;
+    }
+
     #section3 .s1txt_l p,
-    #section4 .s1txt_l p,
-    #section6 .s2txt_l p,
-    #section7 .s1txt_l p{
-        font-size:15px;
-        line-height:1.7;
-        word-break:keep-all;
-        margin-bottom:50px;
-    }
-    #section4 .m3_box div h5{
-        font-size:24px;
-        line-height:1.7;
-        word-break:keep-all;
-    }
-    #section4 .m3_box div p{
-        font-size:13px;
-        line-height:1.7;
-        word-break:keep-all;
-    }
-
-    #section3 .s1img,
-    #section6 .s1img{
-        width:100vw;
-        margin-left:calc(50% - 50vw);
+    #section6 .s2txt_l p {
+        margin-bottom: 50px;
     }
 
     #section3 .c_group,
-    #section6 .c_group{
-        width:90%;
-        flex-direction:column;
-        gap:32px;
-        padding:50px 0;
+    #section6 .c_group {
+        width: calc(100% - 40px);
+        grid-template-columns: 1fr;
+        gap: 24px;
+        padding-block: 50px;
     }
 
     #section3 .circle1,
-    #section6 .circle1{
-        width:100%;
-        background:#fff;
-        border-radius:20px;
-        padding:36px 24px;
-        box-sizing:border-box;
-        text-align:center;
+    #section6 .circle1 {
+        width: 100%;
+        padding: 34px 22px;
+        border-radius: 20px;
+        background: #fff;
     }
 
     #section3 .circle,
-    #section6 .circle{
-        width:140px;
-        height:140px;
-        margin:0 auto 24px;
+    #section6 .circle {
+        width: 145px;
+        margin-bottom: 24px;
     }
 
-    #section4 .m3_box{
-        flex-direction:column;
-        gap:24px;
+    #section4,
+    #section5 {
+        padding-block: 90px;
     }
 
-    #section4 .m3_box div{
-        width:100%;
-        min-height:360px;
-        padding:40px 24px;
+    #section4 .s1txt_l p {
+        margin-bottom: 48px;
     }
 
-    #section5 .s5_box,
-    #section5 .s5_boxes div{
-        width:280px !important;
-        height:260px !important;
-        flex:0 0 280px !important;
+    #section4 .m3_box > div {
+        min-height: 350px;
+        padding: 38px 24px;
     }
 
-    #section5 .s5_boxes{
-        gap:20px;
+    #section4 .m3_box h5 {
+        font-size: 24px;
     }
 
-    #section5 .s5_progress{
-        margin-top:30px;
+    #section4 .m3_box p {
+        font-size: 15px;
+        line-height: 1.7;
     }
 
-    #section7 .s7_boxes{
-        flex-direction:column;
-        gap:24px;
+    #section5 .s5_box {
+        width: min(78vw, 320px);
+        flex-basis: min(78vw, 320px);
     }
 
-    #section7 .s7_boxes div{
-        width:100%;
-        min-height:auto;
-        padding:40px 24px;
-        box-sizing:border-box;
+    #section5 .s5_boxes {
+        gap: 18px;
+    }
+
+    #section5 .s5_progress {
+        margin-top: 30px;
+    }
+
+    #section7 {
+        padding-bottom: 100px;
+    }
+
+    #section7 .s1txt_l p {
+        margin-bottom: 48px;
+    }
+
+    #section7 .s7_boxes {
+        grid-template-columns: 1fr;
+    }
+
+    #section7 .s7_box,
+    #section7 .s7_box:last-child {
+        grid-column: auto;
+        width: 100%;
+        min-height: 0;
+        padding: 38px 24px;
+    }
+
+    #section7 .s7_box h5 {
+        font-size: 20px;
+    }
+
+    #section7 .s7_box p {
+        font-size: 15px;
+        line-height: 1.7;
     }
 
     #footer .footer_nav,
-    #footer .footer_bottom{
-        width:90%;
-        flex-direction:column;
-        align-items:flex-start;
-        gap:30px;
+    #footer .footer_bottom {
+        width: calc(100% - 40px);
+    }
+
+    #footer .footer_nav {
+        padding-block: 30px;
+    }
+
+    #footer .footer_l {
+        gap: 10px 16px;
+    }
+
+    #footer .footer_l li::after {
+        display: none;
+    }
+
+    #footer .footer_bottom {
+        padding-block: 30px;
+        gap: 24px;
+    }
+
+    #footer address {
+        font-size: 14px;
     }
 }
-/* MOBILE MENU */
-.mobile_menu{
-    position:fixed;
-    top:0;
-    right:-100%;
-    width:80%;
-    max-width:420px;
-    height:100vh;
-    background:#fff;
-    z-index:9999;
-    padding:100px 30px 40px;
-    box-sizing:border-box;
-    transition:right .35s ease;
-    overflow-y:auto;
-    z-index:99999 !important;
+
+/* =========================================================
+   SMALL MOBILE — 420px
+========================================================= */
+
+@media (max-width: 420px) {
+    :root {
+        --page-gutter: 16px;
+    }
+
+    #header .header_inner {
+        width: calc(100% - 32px);
+    }
+
+    #section3 .c_group,
+    #section6 .c_group {
+        width: calc(100% - 32px);
+    }
+
+    #section3 .circle,
+    #section6 .circle {
+        width: 135px;
+    }
+
+    #section4 .m3_box > div {
+        min-height: 330px;
+        padding: 32px 20px;
+    }
+
+    #footer .footer_nav,
+    #footer .footer_bottom {
+        width: calc(100% - 32px);
+    }
 }
 
-.mobile_menu.on{
-    right:0;
+@media (prefers-reduced-motion: reduce) {
+    .motion,
+    .motion.show {
+        opacity: 1;
+        filter: none;
+        transform: none;
+        transition: none;
+    }
 }
 
-.mobile_menu_close{
-    position:absolute !important;
-    top:25px;
-    right:25px;
-    border:none;
-    background:none;
-    font-size:30px;
-    cursor:pointer;
+/* =========================================================
+   MODALITY GRID FINAL FIX
+   1440px 이하: 6개 항목을 3개씩 두 줄로 정렬
+   화살표는 태블릿·모바일에서 완전히 제거
+========================================================= */
+
+@media (max-width: 1440px) {
+    #section3 .c_group,
+    #section6 .c_group {
+        min-height: auto;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        column-gap: clamp(24px, 4vw, 56px);
+        row-gap: 56px;
+        padding-block: 64px;
+    }
+
+    #section3 .step_arrow,
+    #section6 .step_arrow {
+        display: none !important;
+    }
+
+    #section3 .circle1,
+    #section6 .circle1 {
+        width: 100%;
+        min-width: 0;
+    }
+
+    #section3 .circle,
+    #section6 .circle {
+        width: min(16vw, 180px);
+        margin-inline: auto;
+    }
 }
 
-.mobile_menu .m_menu > li{
-    border-bottom:1px solid #ddd;
-    padding:20px 0;
+@media (max-width: 900px) {
+    #section3 .c_group,
+    #section6 .c_group {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        column-gap: 28px;
+        row-gap: 32px;
+    }
+
+    #section3 .step_arrow,
+    #section6 .step_arrow {
+        display: none !important;
+    }
+
+    #section3 .circle,
+    #section6 .circle {
+        width: 160px;
+    }
 }
 
-.mobile_menu .m_menu > li > a{
-    font-size:20px;
-    font-weight:700;
-    color:#111;
+@media (max-width: 768px) {
+    #section3 .c_group,
+    #section6 .c_group {
+        grid-template-columns: 1fr;
+    }
+
+    #section3 .step_arrow,
+    #section6 .step_arrow {
+        display: none !important;
+        width: 0 !important;
+        height: 0 !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        overflow: hidden !important;
+    }
 }
 
-.mobile_menu .m_sub{
-    margin-top:15px;
-    display:none;
+
+/* =========================================================
+   MODALITY LAYOUT — VERIFIED FINAL OVERRIDE
+   중요: 기존 HTML의 화살표 div에 class가 없어도 작동
+========================================================= */
+
+/* 태블릿: 6개 항목을 정확히 3개씩 두 줄로 배치 */
+@media (min-width: 769px) and (max-width: 1440px) {
+    #section3 .c_group,
+    #section6 .c_group {
+        display: grid !important;
+        grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+        align-items: start !important;
+        column-gap: clamp(24px, 4vw, 56px) !important;
+        row-gap: 56px !important;
+        min-height: auto !important;
+        padding-block: 64px !important;
+    }
+
+    /* 화살표 wrapper에 step_arrow 클래스가 없어도 전부 제거 */
+    #section3 .c_group > *:not(.circle1),
+    #section6 .c_group > *:not(.circle1) {
+        display: none !important;
+    }
+
+    #section3 .circle1,
+    #section6 .circle1 {
+        width: 100% !important;
+        min-width: 0 !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        background: transparent !important;
+    }
+
+    #section3 .circle,
+    #section6 .circle {
+        width: clamp(145px, 14vw, 180px) !important;
+        margin: 0 auto 28px !important;
+    }
 }
 
-.mobile_menu .m_sub li{
-    margin:10px 0;
-}
+/* 모바일: 한 줄에 하나, 화살표 완전 제거 */
+@media (max-width: 768px) {
+    #section3 .c_group,
+    #section6 .c_group {
+        display: grid !important;
+        grid-template-columns: minmax(0, 1fr) !important;
+        gap: 24px !important;
+    }
 
-.mobile_menu .m_sub a{
-    font-size:15px;
-    color:#555;
-}
+    #section3 .c_group > *:not(.circle1),
+    #section6 .c_group > *:not(.circle1) {
+        display: none !important;
+        width: 0 !important;
+        height: 0 !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        overflow: hidden !important;
+    }
 
-.mobile_dim{
-    position:fixed;
-    inset:0;
-    background:rgba(0,0,0,.45);
-    z-index:99998 !important;
-    display:none;
-}
-
-.mobile_dim.on{
-    display:block;
+    #section3 .circle1,
+    #section6 .circle1 {
+        width: 100% !important;
+        grid-column: auto !important;
+        margin: 0 !important;
+    }
 }
