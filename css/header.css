@@ -1,142 +1,182 @@
-/* =========================
+/* =========================================================
+   SAMSUNG BIOLOGICS
    HEADER / NAV / MOBILE MENU
-========================= */
+========================================================= */
 
-#header{
-    position: absolute;
+/* -------------------- HEADER BASE -------------------- */
+
+#header {
+    position: fixed;
     top: 0;
     left: 0;
+    z-index: 9999;
+
     width: 100%;
     height: 110px;
-    transition: all .6s;
+
+    background: transparent;
+    transition:
+        height .4s ease,
+        background-color .4s ease,
+        box-shadow .4s ease;
 }
 
-#header.act{
-    /* 헤드인일때와 아웃일때 애니메이션 설정 위해 추가 스타일선언 */
-    width: 100%;
-    height: 110px;
-    background-color: #fff;
+#header.act,
+#header.scroll {
+    background: rgba(255, 255, 255, .96);
 }
 
-#header:hover{
-    background-color: #fff;
+#header.scroll {
+    box-shadow: 0 8px 30px rgba(0, 0, 0, .08);
+    -webkit-backdrop-filter: blur(14px);
+    backdrop-filter: blur(14px);
 }
 
-#header:hover .menu a{
-    color: #333;
-}
-
-#header:hover .info_r a{
-    color: #333;
-}
-
-#header .header_inner{
+#header .header_inner {
+    width: min(1600px, 90%);
+    height: 100%;
     margin: 0 auto;
-    width: 100%;
-    max-width: 1600px;
-    height: 110px;
+
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-between;
 }
 
-#header .logo{
+#header .logo {
     width: 125px;
+    height: auto;
+    flex: 0 0 auto;
+}
+
+#header .logo img {
+    display: block;
+    width: 100%;
     height: auto;
 }
 
-#header .logo_black{
+#header .logo_black {
     opacity: 0;
 }
 
-#nav{
+
+/* -------------------- DESKTOP NAV -------------------- */
+
+#nav {
     width: 870px;
-    height: 110px;
+    height: 100%;
+
     display: flex;
     align-items: center;
-    /* 서브메뉴로 이동시 사라지지않게 하기위해 블록설정 */
 }
 
-#nav .menu{
+#nav .menu {
     display: flex;
+    align-items: center;
     gap: 100px;
 }
 
-#nav .menu a{
-    font-size: clamp(14px, 1vw, 18px);
-    color: #fff;
-    font-weight: 600;
-}
-
-#nav .menu > li{
+#nav .menu > li {
     position: relative;
 }
 
-#nav .menu > li >a:hover{
+#nav .menu a {
+    color: #fff;
+    font-size: clamp(14px, 1vw, 18px);
+    font-weight: 600;
+}
+
+#nav .menu > li > a:hover {
     color: #777;
 }
 
-#nav .sub{
+#nav .sub {
     position: absolute;
     top: 300%;
     left: 50%;
-    transform: translateX(-50%);
+    z-index: 200;
+
     min-width: 160px;
     padding-top: clamp(16px, 1.2vw, 20px);
+
     text-align: center;
-    z-index: 200;
+    transform: translateX(-50%);
 }
 
-#nav .sub li{
+#nav .sub li {
     padding: 20px 0;
 }
 
-#nav .sub li a{
+#nav .sub li a {
     display: block;
-    font-size: clamp(14px, 1vw, 18px);
+
     color: #333;
+    font-size: clamp(14px, 1vw, 18px);
     font-weight: 400;
-    white-space: nowrap;
     letter-spacing: -1px;
+    white-space: nowrap;
 }
 
-#nav .sub li a:hover{
+#nav .sub li a:hover {
     color: #222edd;
 }
 
-#header .submn_area{
+#header .submn_area {
     position: absolute;
     top: 110px;
     left: 0;
     z-index: 100;
+
     width: 100%;
-    height: auto;
-    background: #fff;
+    height: 0;
+    padding: 0 50px;
+
     overflow: hidden;
-    border-top: 1px solid #ccc;
-    padding: 50px;
+    border-top: 1px solid transparent;
+    background: #fff;
+    box-sizing: border-box;
 }
 
-#info{
+
+/* -------------------- RIGHT INFO -------------------- */
+
+#info {
     transform: translateY(-10px);
 }
 
-#info .info_r{
+#info .info_r {
     display: flex;
     gap: 20px;
 }
 
-#info .info_r a{
-    font-size: 16px;
+#info .info_r a {
     color: #fff;
+    font-size: 16px;
     font-weight: 200;
 }
 
-/* 기본 상태 */
-#header .mobile_btn {
-    display: none;
-    position: relative;
 
+/* -------------------- DARK TEXT STATE -------------------- */
+
+#header.act .menu a,
+#header.scroll .menu a,
+#header.act .info_r a,
+#header.scroll .info_r a {
+    color: #111;
+}
+
+#header.act .mobile_btn,
+#header.scroll .mobile_btn {
+    color: #111;
+}
+
+
+/* -------------------- MOBILE HAMBURGER -------------------- */
+
+#header .mobile_btn {
+    position: relative;
+    z-index: 999;
+
+    display: none;
     width: 36px;
     height: 36px;
     flex: 0 0 36px;
@@ -147,199 +187,190 @@
     color: #fff;
 
     cursor: pointer;
-    z-index: 999;
 }
 
-/* 기존 Font Awesome 뚱뚱한 아이콘 숨김 */
 #header .mobile_btn i {
     display: none;
 }
 
-/* 위·아래 선 */
-#header .mobile_btn::before {
+#header .mobile_btn::before,
+#header .mobile_btn::after {
     content: "";
     position: absolute;
+
+    height: 2px;
+    border-radius: 999px;
+    background: currentColor;
+
+    transition:
+        transform .25s ease,
+        width .25s ease,
+        background-color .25s ease;
+}
+
+#header .mobile_btn::before {
     top: 9px;
     left: 5px;
 
     width: 26px;
-    height: 2px;
-
-    border-radius: 999px;
-    background: currentColor;
     box-shadow: 0 16px 0 currentColor;
-
-    transition: all 0.25s ease;
 }
 
-/* 가운데 선 — 살짝 짧게 */
 #header .mobile_btn::after {
-    content: "";
-    position: absolute;
     top: 17px;
     right: 5px;
 
     width: 19px;
-    height: 2px;
-
-    border-radius: 999px;
-    background: currentColor;
-
-    transition: all 0.25s ease;
 }
 
-@media screen and (max-width:1600px){
-    #header .header_inner{
-        width: 90%;
-        max-width: 1600px;
-    }
 
-    #nav{
-        width: auto;
-    }
+/* -------------------- MOBILE DRAWER -------------------- */
 
-    #nav .menu{
-        gap: 60px;
-    }
-}
-
-@media screen and (max-width:1200px){
-    #nav,
-    #info{
-        display: none;
-    }
-
-    #header .mobile_btn{
-        display: block;
-        border: none;
-        background: none;
-        color: #fff;
-        font-size: 34px;
-        cursor: pointer;
-        z-index: 999;
-    }
-
-    #header:hover .mobile_btn,
-    #header.act .mobile_btn{
-        color: #111;
-    }
-}
-
-@media screen and (max-width:768px){
-    #header,
-    #header.act{
-        height: 80px;
-    }
-
-    #header .header_inner{
-        height: 80px;
-    }
-
-    #header .logo{
-        width: 110px;
-    }
-}
-
-.mobile_menu{
+.mobile_menu {
     position: fixed;
     top: 0;
     right: -100%;
+    z-index: 10001;
+
     width: 80%;
     max-width: 420px;
     height: 100vh;
-    background: #fff;
-    z-index: 9999;
     padding: 90px 30px 40px;
-    box-sizing: border-box;
-    transition: right .35s ease;
+
     overflow-y: auto;
+    background: #fff;
+    box-sizing: border-box;
+
+    transition: right .35s ease;
 }
 
-.mobile_menu.on{
+.mobile_menu.on {
     right: 0;
 }
 
-.mobile_menu_close{
+.mobile_menu_close {
     position: absolute;
     top: 25px;
     right: 25px;
-    border: none;
-    background: none;
+
+    border: 0;
+    background: transparent;
+
     font-size: 30px;
     cursor: pointer;
 }
 
-.mobile_menu .m_menu > li{
-    border-bottom: 1px solid #ddd;
+.mobile_menu .m_menu > li {
     padding: 20px 0;
+    border-bottom: 1px solid #ddd;
 }
 
-.mobile_menu .m_menu > li > a{
+.mobile_menu .m_menu > li > a {
+    color: #111;
     font-size: 20px;
     font-weight: 700;
-    color: #111;
 }
 
-.mobile_menu .m_sub{
-    margin-top: 15px;
+.mobile_menu .m_sub {
     display: none;
+    margin-top: 15px;
 }
 
-.mobile_menu .m_sub li{
+.mobile_menu .m_sub li {
     margin: 10px 0;
 }
 
-.mobile_menu .m_sub a{
-    font-size: 15px;
+.mobile_menu .m_sub a {
     color: #555;
+    font-size: 15px;
 }
 
-.mobile_dim{
+.mobile_dim {
     position: fixed;
+    z-index: 10000;
     inset: 0;
-    background: rgba(0,0,0,.45);
-    z-index: 9998;
+
     display: none;
+    background: rgba(0, 0, 0, .45);
 }
 
-.mobile_dim.on{
+.mobile_dim.on {
     display: block;
 }
 
-#header{
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 110px;
-    z-index: 9999;
-    transition: all .4s ease;
-    background: transparent;
+
+/* =========================================================
+   RESPONSIVE
+   모든 미디어쿼리는 이 아래에만 작성
+========================================================= */
+
+@media screen and (max-width: 1600px) {
+    #nav {
+        width: auto;
+    }
+
+    #nav .menu {
+        gap: 60px;
+    }
 }
 
-#header.scroll{
-    background: rgba(255,255,255,.92);
-    backdrop-filter: blur(14px);
-    box-shadow: 0 8px 30px rgba(0,0,0,.08);
+
+/* 실제 마우스가 있는 PC에서만 hover 적용 */
+@media (min-width: 1201px) and (hover: hover) and (pointer: fine) {
+    #header:hover {
+        background: #fff;
+    }
+
+    #header:hover .menu a,
+    #header:hover .info_r a {
+        color: #111;
+    }
+
+    #header:hover .submn_area {
+        border-top-color: #ccc;
+    }
 }
 
-#header.scroll .menu a,
-#header.scroll .info_r a{
-    color: #333;
+
+@media screen and (max-width: 1200px) {
+    #nav,
+    #info {
+        display: none;
+    }
+
+    #header .mobile_btn {
+        display: block;
+    }
+
+    #header .submn_area,
+    #nav .sub {
+        display: none !important;
+        width: 0 !important;
+        height: 0 !important;
+        padding: 0 !important;
+        border: 0 !important;
+        overflow: hidden !important;
+    }
 }
 
-#header.scroll .mobile_btn{
-    color: #111;
-}
 
-#header.scroll,
-#header:hover{
-    background: #fff;
-}
+@media screen and (max-width: 768px) {
+    #header,
+    #header.act,
+    #header.scroll {
+        height: 80px;
+    }
 
-#header.scroll .menu a,
-#header:hover .menu a,
-#header.scroll .info_r a,
-#header:hover .info_r a{
-    color: #111;
+    #header .header_inner {
+        height: 80px;
+        align-items: center;
+    }
+
+    #header .logo {
+        width: 110px;
+    }
+
+    #header .mobile_btn {
+        align-self: center;
+    }
 }

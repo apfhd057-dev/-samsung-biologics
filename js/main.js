@@ -16,7 +16,7 @@ $(document).ready(function(){
         $(this).removeClass("act");
     });
     $('#nav').mouseenter(function(){
-        $('.submn_area').stop(true,true).show().animate({height:250},200);
+        $('.submn_area').stop(true,true).show().animate({height:350},200);
         $('.sub').stop(true,true).fadeIn(150);
     });
     // $('#nav').mouseleave(function(){
