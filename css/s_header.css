@@ -15,6 +15,7 @@
     height: 110px;
 
     background: transparent;
+    border-bottom: 1PX solid #eee;
     transition:
         height .4s ease,
         background-color .4s ease,
