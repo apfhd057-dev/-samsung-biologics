@@ -598,7 +598,7 @@ window.addEventListener("load", function(){
         <button class="mobile_menu_close">×</button>
         <ul class="m_menu">
             <li>
-                <a href="./aboutus.html">ABOUT US</a>
+                <a href="./aboutus.html">About us</a>
                 <ul class="m_sub">
                     <li><a href="./aboutus.html">삼성바이오로직스</a></li>
                     <li><a href="#">리더십</a></li>

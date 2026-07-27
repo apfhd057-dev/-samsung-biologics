@@ -86,148 +86,6 @@ button {
     min-width: 0;
 }
 
-/* =========================================================
-   HEADER
-   s_research / d_research와 동일
-========================================================= */
-
-#header {
-    position: relative;
-    z-index: 100;
-    width: 100%;
-    border-bottom: 1px solid var(--line);
-    background: #fff;
-}
-
-#header.act {
-    height: 110px;
-    background: #fff;
-}
-
-#header .header_inner {
-    height: 110px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: clamp(24px, 3vw, 60px);
-}
-
-#header .logo {
-    flex: 0 0 125px;
-    width: 125px;
-}
-
-#header .logo img {
-    width: 100%;
-}
-
-#nav {
-    flex: 1 1 auto;
-    min-width: 0;
-    height: 110px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-#nav .menu {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: clamp(30px, 4.2vw, 100px);
-}
-
-#nav .menu > li {
-    position: relative;
-}
-
-#nav .menu > li > a {
-    display: block;
-    color: var(--text);
-    font-size: clamp(14px, 1vw, 18px);
-    font-weight: 600;
-    white-space: nowrap;
-    transition: color 0.25s ease;
-}
-
-#nav .menu > li > a:hover,
-#nav .menu > li > a:focus-visible {
-    color: #777;
-}
-
-#nav .sub {
-    position: absolute;
-    top: calc(100% + 36px);
-    left: 50%;
-    z-index: 200;
-    min-width: 180px;
-    padding-top: 18px;
-    text-align: center;
-    transform: translateX(-50%);
-}
-
-#nav .sub li {
-    padding: 12px 0;
-}
-
-#nav .sub a {
-    display: block;
-    color: #333;
-    font-size: clamp(14px, 1vw, 17px);
-    font-weight: 400;
-    letter-spacing: -0.04em;
-    white-space: nowrap;
-    transition: color 0.25s ease;
-}
-
-#nav .sub a:hover,
-#nav .sub a:focus-visible {
-    color: #222edd;
-}
-
-#header .submn_area {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    z-index: 100;
-    width: 100%;
-    min-height: 0;
-    padding: 50px;
-    overflow: hidden;
-    border-top: 1px solid #ccc;
-    background: #fff;
-}
-
-#info {
-    flex: 0 0 auto;
-}
-
-#info .info_r {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-}
-
-#info .info_r a {
-    color: var(--text);
-    font-size: 16px;
-    font-weight: 300;
-    white-space: nowrap;
-}
-
-#info .info_r img {
-    width: 20px;
-}
-
-#header .mobile_btn {
-    display: none;
-    flex: 0 0 auto;
-    padding: 8px;
-    border: 0;
-    background: transparent;
-    color: var(--text);
-    font-size: 30px;
-}
 
 /* =========================================================
    COMMON TYPOGRAPHY
@@ -285,7 +143,9 @@ button {
 ========================================================= */
 
 #section1 {
-    padding-block: clamp(100px, 9vw, 140px) clamp(120px, 12vw, 200px);
+    padding-block:
+        calc(110px + clamp(100px, 9vw, 140px))
+        clamp(120px, 12vw, 200px);
 }
 
 #section1 .s1txt_l p {
@@ -497,7 +357,7 @@ button {
     scrollbar-width: none;
     user-select: none;
     -webkit-overflow-scrolling: touch;
-    scroll-snap-type: x proximity;
+    scroll-snap-type: none;
 }
 
 #section5 .s5_wrap::-webkit-scrollbar {
@@ -521,7 +381,7 @@ button {
     flex: 0 0 clamp(300px, 32vw, 510px);
     overflow: hidden;
     border-radius: 20px;
-    scroll-snap-align: start;
+    scroll-snap-align: none;
 }
 
 #section5 .s5_box img {
@@ -592,93 +452,34 @@ button {
     word-break: keep-all;
 }
 
-/* =========================================================
-   FOOTER
-   앞선 페이지와 동일
-========================================================= */
-
-#footer .footer_top {
+#section5 .s5_wrap {
     width: 100%;
-    border-top: 1px solid #ccc;
-    border-bottom: 1px solid #ccc;
+    overflow-x: auto;
+    overflow-y: hidden;
+
+    cursor: grab;
+    user-select: none;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+
+    /* 카드 단위로 딱 맞춰지는 기능 제거 */
+    scroll-snap-type: none;
+
+    /* 드래그 중 지연 방지 */
+    scroll-behavior: auto;
+    overscroll-behavior-x: contain;
+    touch-action: pan-y;
 }
 
-#footer .footer_nav {
-    padding-block: 36px;
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) auto;
-    align-items: start;
-    gap: 28px;
-}
+#section5 .s5_box {
+    width: clamp(300px, 32vw, 510px);
+    aspect-ratio: 51 / 47;
+    flex: 0 0 clamp(300px, 32vw, 510px);
+    overflow: hidden;
+    border-radius: 20px;
 
-#footer .footer_l {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 10px 0;
-}
-
-#footer .footer_l li {
-    display: inline-flex;
-    align-items: center;
-    font-size: 14px;
-    line-height: 1.5;
-    white-space: nowrap;
-}
-
-#footer .footer_l li::after {
-    content: "|";
-    padding-inline: 16px;
-    color: #aaa;
-}
-
-#footer .footer_l li:last-child::after {
-    content: "";
-    padding: 0;
-}
-
-#footer .footer_r {
-    display: flex;
-    align-items: center;
-    gap: 18px;
-}
-
-#footer .footer_r img {
-    width: 24px;
-    height: 24px;
-    object-fit: contain;
-}
-
-#footer .footer_bottom {
-    padding-block: 36px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 32px;
-}
-
-#footer address {
-    font-style: normal;
-    line-height: 1.7;
-}
-
-#footer .footer_bottom_icon {
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 16px;
-}
-
-#footer .footer_bottom_icon li:nth-child(1) img {
-    width: 58px;
-}
-
-#footer .footer_bottom_icon li:nth-child(2) img {
-    width: 36px;
-}
-
-#footer .footer_bottom_icon li:nth-child(3) img {
-    width: 48px;
+    /* 이것도 제거 */
+    scroll-snap-align: none;
 }
 
 /* =========================================================
@@ -906,7 +707,7 @@ button {
     }
 
     #section1 {
-        padding-block: 76px 100px;
+        padding-block: 156px 100px;
     }
 
     #section1 .s1txt_l p {
@@ -914,7 +715,7 @@ button {
     }
 
     #section1 .s1img {
-        border-radius: 14px;
+        display: none;
     }
 
     #section2 {
@@ -1239,4 +1040,46 @@ button {
         grid-column: auto !important;
         margin: 0 !important;
     }
+}
+
+/* =========================================================
+   SECTION 05 — SMOOTH FREE DRAG FINAL OVERRIDE
+========================================================= */
+
+#section5 .s5_wrap {
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    cursor: grab !important;
+    user-select: none !important;
+    -webkit-user-select: none !important;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+
+    /* 카드 단위 자동 정렬 완전 해제 */
+    scroll-snap-type: none !important;
+    scroll-behavior: auto !important;
+
+    /* 모바일 세로 스크롤은 유지 */
+    touch-action: pan-y;
+    overscroll-behavior-x: contain;
+}
+
+#section5 .s5_wrap.dragging {
+    cursor: grabbing !important;
+}
+
+#section5 .s5_box {
+    scroll-snap-align: none !important;
+    scroll-snap-stop: normal !important;
+}
+
+#section5 .s5_box img {
+    pointer-events: none !important;
+    user-select: none !important;
+    -webkit-user-select: none !important;
+    -webkit-user-drag: none !important;
+}
+
+#section5 .s5_progress_bar {
+    will-change: width, transform;
 }
