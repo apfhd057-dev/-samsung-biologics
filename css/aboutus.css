@@ -943,7 +943,8 @@ button {
 
 
         #section1 {
-            padding-block: 78px;
+            min-height: auto;
+            padding: 0;
 
     }
 
